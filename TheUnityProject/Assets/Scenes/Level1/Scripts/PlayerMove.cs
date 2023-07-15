@@ -59,13 +59,13 @@ public class PlayerMove : MonoBehaviour
     }
     void Move()
     {
-        moveD = new Vector3(-moveX, 0, moveY).normalized;
+        moveD = new Vector3(moveX, 0, moveY).normalized;
         rb.AddForce(10f * moveSpeed * moveD, ForceMode.Force);
     }
     private void ProcessInputs()
     {
-        moveY = Input.GetAxisRaw("Horizontal");
-        moveX = Input.GetAxisRaw("Vertical");
+        moveX = Input.GetAxisRaw("Horizontal");
+        moveY = Input.GetAxisRaw("Vertical");
 
         //this if statement prevents the character from going back to whatever animation is the default one when standing still
         // || and && operators explanation: https://kodify.net/csharp/if-else/if-logical-operators/
