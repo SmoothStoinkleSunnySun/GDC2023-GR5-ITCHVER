@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class Level1SceneStuff : MonoBehaviour
 {
+    [Header("Private")]
     [SerializeField] CinemachineVirtualCamera vcamstart;
     [SerializeField] float timer;
+
+    [Header("Public")]
+    public Collider playerCollider;
     // Start is called before the first frame update
     void Start()
     {

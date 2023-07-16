@@ -8,10 +8,10 @@ public class PlayerMove : MonoBehaviour
     [TextArea][SerializeField] string notes;
 
     [Header("Public")]
-    [HideInInspector] public bool AllowMovement = true; //this variable decides whether or not the player can move
     public float groundDrag;
     public float playerHeight;
     public LayerMask Ground;
+    [HideInInspector] public bool AllowMovement { get; set; } = true; //this variable decides whether or not the player can move
 
     [Header("Private")]
     [SerializeField] float moveSpeed;
@@ -71,7 +71,7 @@ public class PlayerMove : MonoBehaviour
         // || and && operators explanation: https://kodify.net/csharp/if-else/if-logical-operators/
         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         {
-           // Animate();
+            // Animate();
         }
     }
     void Animate()
