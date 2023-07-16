@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cutscene : MonoBehaviour
 {
@@ -11,12 +12,15 @@ public class Cutscene : MonoBehaviour
     [Serializable]
     struct Cutscenes
     {
-        [SerializeField] Sprite[] sprites;
+        public Sprite[] sprites;
     }
 
     [SerializeField] Cutscenes[] coolCutscenes;
 
-    [SerializeField] GameObject tempImg;
+    [SerializeField] float imageTimer;
+    [SerializeField] Animator dark_anim;
+    [SerializeField] Image img;
+    [SerializeField] PlayerMove playerScript;
     [HideInInspector] int cutsceneToPlay { get; set; }
     public static Cutscene Instance
     {
@@ -30,7 +34,31 @@ public class Cutscene : MonoBehaviour
     }
     public void startCutscene()
     {
-        tempImg.SetActive(true);
+        StartCoroutine(imageIntervals(imageTimer));
+        playerScript.AllowMovement = false;
+    }
+    IEnumerator imageIntervals(float timer)
+    {       
+        for (int i = 0; i < coolCutscenes[cutsceneToPlay].sprites.Length; i++)
+        {
+            dark_anim.Play("fade in");
+            yield return new WaitUntil(() => dark_anim.GetCurrentAnimatorStateInfo(0).IsName("black"));
 
+            if (!img.enabled)
+            {
+                img.enabled = true;
+            }
+
+            img.sprite = coolCutscenes[cutsceneToPlay].sprites[i];
+            dark_anim.Play("fade out");
+            yield return new WaitForSeconds(timer);
+        }
+        dark_anim.Play("fade in");
+        yield return new WaitUntil(() => dark_anim.GetCurrentAnimatorStateInfo(0).IsName("black"));
+        img.enabled = false;
+        dark_anim.Play("fade out");
+        playerScript.AllowMovement = true;
+
+        StopCoroutine(imageIntervals(timer));
     }
 }
