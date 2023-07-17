@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Cutscene : MonoBehaviour
@@ -21,7 +22,8 @@ public class Cutscene : MonoBehaviour
     [SerializeField] Animator dark_anim;
     [SerializeField] Image img;
     [SerializeField] PlayerMove playerScript;
-    [HideInInspector] int cutsceneToPlay { get; set; }
+    public int cutsceneToPlay { get; set; }
+
     public static Cutscene Instance
     {
         get;
@@ -36,9 +38,10 @@ public class Cutscene : MonoBehaviour
     {
         StartCoroutine(imageIntervals(imageTimer));
         playerScript.AllowMovement = false;
+
     }
     IEnumerator imageIntervals(float timer)
-    {       
+    {
         for (int i = 0; i < coolCutscenes[cutsceneToPlay].sprites.Length; i++)
         {
             dark_anim.Play("fade in");
