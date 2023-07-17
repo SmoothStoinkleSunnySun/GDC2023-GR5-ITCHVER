@@ -71,7 +71,7 @@ public class PlayerMove : MonoBehaviour
         // || and && operators explanation: https://kodify.net/csharp/if-else/if-logical-operators/
         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         {
-            // Animate();
+            Animate();
         }
     }
     void Animate()
