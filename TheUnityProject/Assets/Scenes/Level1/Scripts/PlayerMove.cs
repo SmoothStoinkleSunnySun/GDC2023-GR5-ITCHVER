@@ -11,12 +11,12 @@ public class PlayerMove : MonoBehaviour
     public float groundDrag;
     public float playerHeight;
     public LayerMask Ground;
+    public Rigidbody rb;
     [HideInInspector] public bool AllowMovement { get; set; } = true; //this variable decides whether or not the player can move
 
     [Header("Private")]
     [SerializeField] float moveSpeed;
     [SerializeField] Animator anim;
-    [SerializeField] Rigidbody rb;
 
     //not visible in inspector
 

@@ -1931,7 +1931,7 @@ GameObject:
   - component: {fileID: 360252056}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6497,7 +6497,7 @@ GameObject:
   - component: {fileID: 998285450}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6540,9 +6540,9 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 64
+  rb: {fileID: 998285449}
   moveSpeed: 4
   anim: {fileID: 998285450}
-  rb: {fileID: 998285449}
 --- !u!54 &998285449
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14258,7 +14258,7 @@ GameObject:
   - component: {fileID: 3710936397568558617}
   m_Layer: 0
   m_Name: rat collider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14739,7 +14739,7 @@ GameObject:
   - component: {fileID: 5385842648250478263}
   m_Layer: 0
   m_Name: rat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14757,7 +14757,7 @@ GameObject:
   - component: {fileID: 995734736941407460}
   m_Layer: 0
   m_Name: Rat body.001
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14792,6 +14792,99 @@ Transform:
   m_Father: {fileID: 998285447}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7509695343925402475
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 376801475391083125, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: dark_anim
+      value: 
+      objectReference: {fileID: 895638022}
+    - target: {fileID: 376801475391083125, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: playerScript
+      value: 
+      objectReference: {fileID: 998285448}
+    - target: {fileID: 1573669867433020677, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573669867433020677, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -110.20747
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573669867433020677, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -31.587406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573669867433020677, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 53.88784
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573669867433020677, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573669867433020677, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573669867433020677, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573669867433020677, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573669867433020677, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573669867433020677, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573669867433020677, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1867828698753154248, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1867828698753154248, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 667
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205337325216188942, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: m_Name
+      value: RoomTeleport
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1f5c2f6b8e32466428ba60574a73fd81, type: 3}
 --- !u!33 &8476602974861619529
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -14813,7 +14906,7 @@ GameObject:
   - component: {fileID: 3883820160252391985}
   m_Layer: 0
   m_Name: Eyes.001
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
