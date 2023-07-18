@@ -11,6 +11,12 @@ public class CodeManage : MonoBehaviour
     public Material[] OffMat;
     public Material[] RedMat;
     public Material[] GreenMat;
+    [SerializeField] Material[] LockGoldenMat;
+    [SerializeField] MeshRenderer lockMesh;
+    [SerializeField] GameObject interact;
+    //incredibly scuffed
+    [SerializeField] GameObject originalDoor;
+    [SerializeField] GameObject newDoor;
 
     [SerializeField] UnityEvent CodePuzzleSolved;
     bool puzzleSolved = false;
@@ -32,6 +38,7 @@ public class CodeManage : MonoBehaviour
             {
                 CodePuzzleSolved.Invoke();
                 puzzleSolved = true;
+                interact.SetActive(true);
                 for (int i = 0; i < scripto.Length; i++)
                 {
                     scripto[i].ShouldICheck = false;
@@ -42,5 +49,20 @@ public class CodeManage : MonoBehaviour
                 greens = 0;
             }
         }
+    }
+    public void startCage()
+    {
+        StartCoroutine(messWithCageDoor());
+    }
+    public void changeLock()
+    {
+        lockMesh.materials = LockGoldenMat;
+    }
+    public IEnumerator messWithCageDoor()
+    {
+        yield return new WaitForSeconds(2);
+        originalDoor.SetActive(false);
+        newDoor.SetActive(true);
+        StopCoroutine(messWithCageDoor());
     }
 }
