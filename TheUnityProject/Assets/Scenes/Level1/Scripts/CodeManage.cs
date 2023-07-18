@@ -54,12 +54,15 @@ public class CodeManage : MonoBehaviour
     {
         StartCoroutine(messWithCageDoor());
     }
+    public void changeLock()
+    {
+        lockMesh.materials = LockGoldenMat;
+    }
     public IEnumerator messWithCageDoor()
     {
         yield return new WaitForSeconds(2);
         originalDoor.SetActive(false);
         newDoor.SetActive(true);
-        lockMesh.materials = LockGoldenMat;
         StopCoroutine(messWithCageDoor());
     }
 }
