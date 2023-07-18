@@ -6,6 +6,7 @@ public class lvl3_ColliderTrigger : MonoBehaviour
 {
     [SerializeField] CodeManage codeScript;
     [SerializeField] MeshRenderer meshRend;
+    [SerializeField] MeshRenderer meshRendLock;
     public bool ShouldICheck { get; set; } = true;
 
     [Header("colliders")]
@@ -23,11 +24,13 @@ public class lvl3_ColliderTrigger : MonoBehaviour
             {
                 stuffInTrigger = true;
                 meshRend.materials = codeScript.GreenMat;
+                meshRendLock.materials = codeScript.GreenMat;
             }
             else foreach (var Collider in codeScript.boxColliders)
                 {
                     stuffInTrigger = true;
                     meshRend.materials = codeScript.RedMat;
+                    meshRendLock.materials = codeScript.RedMat;
                 }
         }
 
@@ -40,11 +43,13 @@ public class lvl3_ColliderTrigger : MonoBehaviour
             {
                 stuffInTrigger = false;
                 meshRend.materials = codeScript.OffMat;
+                meshRendLock.materials = codeScript.OffMat;
             }
             else foreach (var collider in codeScript.boxColliders)
                 {
                     stuffInTrigger = false;
                     meshRend.materials = codeScript.OffMat;
+                    meshRendLock.materials = codeScript.OffMat;
                 }
         }
 
@@ -58,11 +63,13 @@ public class lvl3_ColliderTrigger : MonoBehaviour
             {
                 stuffInTrigger = true;
                 meshRend.materials = codeScript.GreenMat;
+                meshRendLock.materials = codeScript.GreenMat;
             }
             else foreach (var Collider in codeScript.boxColliders)
                 {
                     stuffInTrigger = true;
                     meshRend.materials = codeScript.RedMat;
+                    meshRendLock.materials = codeScript.RedMat;
                 }
         }
     }
