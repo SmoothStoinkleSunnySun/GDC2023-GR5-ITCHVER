@@ -11,6 +11,8 @@ public class CodeManage : MonoBehaviour
     public Material[] OffMat;
     public Material[] RedMat;
     public Material[] GreenMat;
+    [SerializeField] Material[] LockGoldenMat;
+    [SerializeField] MeshRenderer lockMesh;
     [SerializeField] GameObject interact;
     //incredibly scuffed
     [SerializeField] GameObject originalDoor;
@@ -57,6 +59,7 @@ public class CodeManage : MonoBehaviour
         yield return new WaitForSeconds(2);
         originalDoor.SetActive(false);
         newDoor.SetActive(true);
+        lockMesh.materials = LockGoldenMat;
         StopCoroutine(messWithCageDoor());
     }
 }
