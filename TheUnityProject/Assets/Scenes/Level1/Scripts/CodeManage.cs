@@ -17,6 +17,9 @@ public class CodeManage : MonoBehaviour
     //incredibly scuffed
     [SerializeField] GameObject originalDoor;
     [SerializeField] GameObject newDoor;
+    //audii
+    [SerializeField] AudioSource AS;
+    [SerializeField] AudioClip cageFall;
 
     [SerializeField] UnityEvent CodePuzzleSolved;
     bool puzzleSolved = false;
@@ -60,7 +63,8 @@ public class CodeManage : MonoBehaviour
     }
     public IEnumerator messWithCageDoor()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(14.5f); //yes.
+        AS.PlayOneShot(cageFall);
         originalDoor.SetActive(false);
         newDoor.SetActive(true);
         StopCoroutine(messWithCageDoor());

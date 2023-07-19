@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press ESCAPE to quit at any time.
+  m_text: 'Press ESCAPE to quit.
 
     THIS GAME DOES NOT SAVE'
   m_isRightToLeft: 0

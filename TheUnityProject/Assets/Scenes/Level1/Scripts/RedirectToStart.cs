@@ -13,6 +13,7 @@ public class RedirectToStart : MonoBehaviour
         {
             StartCoroutine(RedirectToAScene());
             notPressed = false;
+            Cursor.visible = false;
         }
         
     }
