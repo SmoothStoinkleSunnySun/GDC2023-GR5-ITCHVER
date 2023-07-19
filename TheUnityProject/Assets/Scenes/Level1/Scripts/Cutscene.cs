@@ -22,6 +22,7 @@ public class Cutscene : MonoBehaviour
     [SerializeField] Animator dark_anim;
     [SerializeField] Image img;
     [SerializeField] PlayerMove playerScript;
+    [SerializeField] GameObject ambiences; //lmao
     public int cutsceneToPlay { get; set; }
 
     public static Cutscene Instance
@@ -38,6 +39,7 @@ public class Cutscene : MonoBehaviour
     {
         StartCoroutine(imageIntervals(imageTimer));
         playerScript.AllowMovement = false;
+        ambiences.SetActive(false);
 
     }
     IEnumerator imageIntervals(float timer)
@@ -61,6 +63,7 @@ public class Cutscene : MonoBehaviour
         img.enabled = false;
         dark_anim.Play("fade out");
         playerScript.AllowMovement = true;
+        ambiences.SetActive(true);
 
         StopCoroutine(imageIntervals(timer));
     }
