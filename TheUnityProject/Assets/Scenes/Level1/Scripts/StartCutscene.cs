@@ -61,6 +61,7 @@ public class StartCutscene: MonoBehaviour
         if (isStartCutscene)
         {
             StartCoroutine(RedirectToAScene());
+            GameObject.FindGameObjectWithTag("Speedrunner").GetComponent<SpeedRunModeTracker>().stopTimer();
         }
         StopCoroutine(imageIntervals(timer));
     }
