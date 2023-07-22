@@ -1,34 +1,33 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class RedirectToStart : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    bool notPressed = true;
+    public class RedirectToStart : MonoBehaviour
+    {
+        bool _notPressed = true;
     
-    public void redirectNow()
-    {
-        if (notPressed)
+        public void redirectNow()
         {
+            if (!_notPressed) return;
             StartCoroutine(RedirectToAScene());
-            notPressed = false;
+            _notPressed = false;
             Cursor.visible = false;
+
         }
-        
-    }
-    private IEnumerator RedirectToAScene()
-    {
-        //from https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html        
-        //using scenebuildindex is for nerds
-
-        //load the scene
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync($"StartCutscene");
-
-        // Wait until the asynchronous scene fully loads
-        while (!asyncLoad.isDone)
+        private IEnumerator RedirectToAScene()
         {
-            yield return null;
+            //from https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html        
+            //using scenebuildindex is for nerds
+
+            //load the scene
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync($"StartCutscene");
+
+            // Wait until the asynchronous scene fully loads
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
         }
     }
 }

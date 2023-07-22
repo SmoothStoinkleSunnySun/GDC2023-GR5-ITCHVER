@@ -1,25 +1,29 @@
-using Cinemachine;
 using System.Collections;
-using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
-public class Level1SceneStuff : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    [Header("Private")]
-    [SerializeField] CinemachineVirtualCamera vcamstart;
-    [SerializeField] float timer;
+    public class Level1SceneStuff : MonoBehaviour
+    {
+        [Header("Private")]
+        [SerializeField]
+        private CinemachineVirtualCamera vcamstart;
+        [SerializeField] private float timer;
 
-    [Header("Public")]
-    public Collider playerCollider;
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(timertoswitch(timer));
-    }
-    IEnumerator timertoswitch(float timer)
-    {
-        yield return new WaitForSeconds(timer);
-        vcamstart.Priority = 0;
-        StopCoroutine(timertoswitch(timer));
+        [Header("Public")]
+        public Collider playerCollider;
+        // Start is called before the first frame update
+        private void Start()
+        {
+            StartCoroutine(TimerToSwitch(timer));
+        }
+
+        private IEnumerator TimerToSwitch(float timer)
+        {
+            yield return new WaitForSeconds(timer);
+            vcamstart.Priority = 0;
+            StopCoroutine(TimerToSwitch(timer));
+        }
     }
 }

@@ -1,76 +1,76 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Cutscene : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    //helo this is cutscene be nice idk
-    [TextArea][SerializeField] string notes;
-
-    [Serializable]
-    struct Cutscenes
+    public class Cutscene : MonoBehaviour
     {
-        public Sprite[] sprites;
-    }
+        //helo this is cutscene be nice idk
+        [TextArea][SerializeField] string notes;
 
-    [SerializeField] Cutscenes[] coolCutscenes;
-
-    [SerializeField] float imageTimer;
-    [SerializeField] Animator dark_anim;
-    [SerializeField] Image img;
-    [SerializeField] PlayerMove playerScript;
-    [SerializeField] GameObject ambiences; //lmao
-    [SerializeField] AudioSource sfxA;
-    [SerializeField] AudioClip endFlash;
-    [SerializeField] GameObject audSource;
-    public int cutsceneToPlay { get; set; }
-
-    public static Cutscene Instance
-    {
-        get;
-        set;
-    }
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-        Instance = this;
-    }
-    public void startCutscene()
-    {
-        StartCoroutine(imageIntervals(imageTimer));
-        playerScript.AllowMovement = false;
-        ambiences.SetActive(false);
-
-    }
-    IEnumerator imageIntervals(float timer)
-    {
-        audSource.SetActive(true);
-        for (int i = 0; i < coolCutscenes[cutsceneToPlay].sprites.Length; i++)
+        [Serializable]
+        struct Cutscenes
         {
-            dark_anim.Play("fade in");
-            yield return new WaitUntil(() => dark_anim.GetCurrentAnimatorStateInfo(0).IsName("black"));
-
-            if (!img.enabled)
-            {
-                img.enabled = true;
-            }
-
-            img.sprite = coolCutscenes[cutsceneToPlay].sprites[i];
-            dark_anim.Play("fade out");
-            yield return new WaitForSeconds(timer);
+            public Sprite[] sprites;
         }
-        dark_anim.Play("fade in");
-        yield return new WaitUntil(() => dark_anim.GetCurrentAnimatorStateInfo(0).IsName("black"));
-        img.enabled = false;
-        dark_anim.Play("fade out");
-        playerScript.AllowMovement = true;
-        sfxA.PlayOneShot(endFlash);
-        ambiences.SetActive(true);
-        audSource.SetActive(false);
 
-        StopCoroutine(imageIntervals(timer));
+        [SerializeField] Cutscenes[] coolCutscenes;
+
+        [SerializeField] float imageTimer;
+        [SerializeField] Animator darkAnim;
+        [SerializeField] Image img;
+        [SerializeField] PlayerMove playerScript;
+        [SerializeField] GameObject ambiences; //lmao
+        [SerializeField] AudioSource sfxA;
+        [SerializeField] AudioClip endFlash;
+        [SerializeField] GameObject audSource;
+        public int CutsceneToPlay { get; set; }
+        public static Cutscene Instance
+        {
+            get;
+            set;
+        }
+        void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        }
+        public void startCutscene()
+        {
+            StartCoroutine(imageIntervals(imageTimer));
+            playerScript.AllowMovement = false;
+            ambiences.SetActive(false);
+
+        }
+        IEnumerator imageIntervals(float timer)
+        {
+            audSource.SetActive(true);
+            foreach (var t in coolCutscenes[CutsceneToPlay].sprites)
+            {
+                darkAnim.Play("fade in");
+                yield return new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
+
+                if (!img.enabled)
+                {
+                    img.enabled = true;
+                }
+
+                img.sprite = t;
+                darkAnim.Play("fade out");
+                yield return new WaitForSeconds(timer);
+            }
+            darkAnim.Play("fade in");
+            yield return new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
+            img.enabled = false;
+            darkAnim.Play("fade out");
+            playerScript.AllowMovement = true;
+            sfxA.PlayOneShot(endFlash);
+            ambiences.SetActive(true);
+            audSource.SetActive(false);
+
+            StopCoroutine(imageIntervals(timer));
+        }
     }
 }

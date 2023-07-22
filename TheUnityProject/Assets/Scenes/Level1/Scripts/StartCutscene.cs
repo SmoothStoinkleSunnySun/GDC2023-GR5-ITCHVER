@@ -1,82 +1,87 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
-
-public class StartCutscene: MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    //helo this is cutscene be nice idk
-    [TextArea][SerializeField] string notes;
-
-    [Serializable]
-    struct Cutscenes
+    public class StartCutscene: MonoBehaviour
     {
-        public Sprite[] sprites;
-    }
+        //helo this is cutscene be nice idk
+        [TextArea][SerializeField] string notes;
 
-    [SerializeField] Cutscenes[] coolCutscenes;
-
-    [SerializeField] float imageTimer;
-    [SerializeField] Animator dark_anim;
-    [SerializeField] Image img;
-    [SerializeField] PlayerMove playerScript;
-    [SerializeField] bool isStartCutscene;
-    public int cutsceneToPlay { get; set; }
-
-    public void startCutscene()
-    {
-        StartCoroutine(imageIntervals(imageTimer));
-        if (!isStartCutscene)
+        [Serializable]
+        private struct Cutscenes
         {
-            playerScript.AllowMovement = false;
-        }        
-    }
-    IEnumerator imageIntervals(float timer)
-    {       
-        for (int i = 0; i < coolCutscenes[cutsceneToPlay].sprites.Length; i++)
-        {
-            dark_anim.Play("fade in");
-            yield return new WaitUntil(() => dark_anim.GetCurrentAnimatorStateInfo(0).IsName("black"));
+            public Sprite[] sprites;
+        }
 
-            if (!img.enabled)
+        [SerializeField] Cutscenes[] coolCutscenes;
+
+        [SerializeField] float imageTimer;
+        [FormerlySerializedAs("dark_anim")] [SerializeField] Animator darkAnim;
+        [SerializeField] Image img;
+        [SerializeField] PlayerMove playerScript;
+        [SerializeField] bool isStartCutscene;
+        public int CutsceneToPlay { get; set; }
+
+        public void startCutscene()
+        {
+            StartCoroutine(imageIntervals(imageTimer));
+            if (!isStartCutscene)
             {
-                img.enabled = true;
+                playerScript.AllowMovement = false;
+            }        
+        }
+
+        // ReSharper disable Unity.PerformanceAnalysis
+        private IEnumerator imageIntervals(float timer)
+        {       
+            foreach (var t in coolCutscenes[CutsceneToPlay].sprites)
+            {
+                darkAnim.Play("fade in");
+                yield return new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
+
+                if (!img.enabled)
+                {
+                    img.enabled = true;
+                }
+
+                img.sprite = t;
+                darkAnim.Play("fade out");
+                yield return new WaitForSeconds(timer);
+            }
+            darkAnim.Play("fade in");
+            yield return new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
+            img.enabled = false;
+            darkAnim.Play("fade out");
+            if (!isStartCutscene)
+            {
+                playerScript.AllowMovement = true;
             }
 
-            img.sprite = coolCutscenes[cutsceneToPlay].sprites[i];
-            dark_anim.Play("fade out");
-            yield return new WaitForSeconds(timer);
+            if (isStartCutscene)
+            {
+                StartCoroutine(RedirectToAScene());
+                //called a total of 1 times in the game
+                GameObject.FindGameObjectWithTag("Speedrunner").GetComponent<SpeedRunModeTracker>().stopTimer();
+            }
+            StopCoroutine(imageIntervals(timer));
         }
-        dark_anim.Play("fade in");
-        yield return new WaitUntil(() => dark_anim.GetCurrentAnimatorStateInfo(0).IsName("black"));
-        img.enabled = false;
-        dark_anim.Play("fade out");
-        if (!isStartCutscene)
+        private IEnumerator RedirectToAScene()
         {
-            playerScript.AllowMovement = true;
-        }
+            //from https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html        
+            //using scenebuildindex is for nerds
 
-        if (isStartCutscene)
-        {
-            StartCoroutine(RedirectToAScene());
-            GameObject.FindGameObjectWithTag("Speedrunner").GetComponent<SpeedRunModeTracker>().stopTimer();
-        }
-        StopCoroutine(imageIntervals(timer));
-    }
-    private IEnumerator RedirectToAScene()
-    {
-        //from https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html        
-        //using scenebuildindex is for nerds
+            //load the scene
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync($"Level1");
 
-        //load the scene
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync($"Level1");
-
-        // Wait until the asynchronous scene fully loads
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
+            // Wait until the asynchronous scene fully loads
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
         }
     }
 }

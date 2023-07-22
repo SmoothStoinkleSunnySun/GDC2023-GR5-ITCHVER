@@ -1,76 +1,69 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class lvl3_ColliderTrigger : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    [SerializeField] CodeManage codeScript;
-    [SerializeField] MeshRenderer meshRend;
-    [SerializeField] MeshRenderer meshRendLock;
-    public bool ShouldICheck { get; set; } = true;
-
-    [Header("colliders")]
-    [SerializeField] Collider triggerThing;
-    [SerializeField] Collider boxCollider;
-
-
-    bool stuffInTrigger;
-
-    private void OnTriggerEnter(Collider other)
+    public class lvl3_ColliderTrigger : MonoBehaviour
     {
-        if (ShouldICheck)
+        [SerializeField] private CodeManage codeScript;
+        [SerializeField] private MeshRenderer meshRend;
+        [SerializeField] private MeshRenderer meshRendLock;
+        public bool ShouldICheck { get; set; } = true;
+
+        [Header("colliders")]
+        [SerializeField] private Collider boxCollider;
+
+        bool stuffInTrigger;
+
+        private void OnTriggerEnter(Collider other)
         {
+            if (!ShouldICheck) return;
             if (other == boxCollider)
             {
                 stuffInTrigger = true;
-                meshRend.materials = codeScript.GreenMat;
-                meshRendLock.materials = codeScript.GreenMat;
+                meshRend.materials = codeScript.greenMat;
+                meshRendLock.materials = codeScript.greenMat;
             }
             else foreach (var Collider in codeScript.boxColliders)
-                {
-                    stuffInTrigger = true;
-                    meshRend.materials = codeScript.RedMat;
-                    meshRendLock.materials = codeScript.RedMat;
-                }
-        }
+            {
+                stuffInTrigger = true;
+                meshRend.materials = codeScript.redMat;
+                meshRendLock.materials = codeScript.redMat;
+            }
 
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (stuffInTrigger && ShouldICheck)
+        }
+        private void OnTriggerExit(Collider other)
         {
+            if (!stuffInTrigger || !ShouldICheck) return;
             if (other == boxCollider)
             {
                 stuffInTrigger = false;
-                meshRend.materials = codeScript.OffMat;
-                meshRendLock.materials = codeScript.OffMat;
+                meshRend.materials = codeScript.offMat;
+                meshRendLock.materials = codeScript.offMat;
             }
             else foreach (var collider in codeScript.boxColliders)
-                {
-                    stuffInTrigger = false;
-                    meshRend.materials = codeScript.OffMat;
-                    meshRendLock.materials = codeScript.OffMat;
-                }
+            {
+                stuffInTrigger = false;
+                meshRend.materials = codeScript.offMat;
+                meshRendLock.materials = codeScript.offMat;
+            }
+
+
         }
-
-
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (ShouldICheck)
+        private void OnTriggerStay(Collider other)
         {
+            if (!ShouldICheck) return;
             if (other == boxCollider)
             {
                 stuffInTrigger = true;
-                meshRend.materials = codeScript.GreenMat;
-                meshRendLock.materials = codeScript.GreenMat;
+                meshRend.materials = codeScript.greenMat;
+                meshRendLock.materials = codeScript.greenMat;
             }
             else foreach (var Collider in codeScript.boxColliders)
-                {
-                    stuffInTrigger = true;
-                    meshRend.materials = codeScript.RedMat;
-                    meshRendLock.materials = codeScript.RedMat;
-                }
+            {
+                stuffInTrigger = true;
+                meshRend.materials = codeScript.redMat;
+                meshRendLock.materials = codeScript.redMat;
+            }
         }
     }
 }

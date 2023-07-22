@@ -1,23 +1,24 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class ColliderTriggerTeleport : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    public enum WhichColliderIsThis
+    public class ColliderTriggerTeleport : MonoBehaviour
     {
-        A,
-        B
-    }
-
-    [SerializeField] WhichColliderIsThis ThisCollider;
-    [SerializeField] RoomTeleporting MyRoomTeleport;
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") && MyRoomTeleport.TeleportEnabled)
+        public enum WhichColliderIsThis
         {
-            MyRoomTeleport.Teleport(ThisCollider);
+            A,
+            B
+        }
+
+        [FormerlySerializedAs("ThisCollider")] [SerializeField] WhichColliderIsThis thisCollider;
+        [FormerlySerializedAs("MyRoomTeleport")] [SerializeField] RoomTeleporting myRoomTeleport;
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player") && myRoomTeleport.teleportEnabled)
+            {
+                myRoomTeleport.Teleport(thisCollider);
+            }
         }
     }
 }

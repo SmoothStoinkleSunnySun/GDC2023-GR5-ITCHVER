@@ -1,93 +1,96 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class PlayerMove : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    //some code from https://www.youtube.com/watch?v=f473C43s8nE
-    [TextArea][SerializeField] string notes;
-
-    [Header("Public")]
-    public float groundDrag;
-    public float playerHeight;
-    public LayerMask Ground;
-    public Rigidbody rb;
-    [HideInInspector] public bool AllowMovement { get; set; } = true; //this variable decides whether or not the player can move
-
-    [Header("Private")]
-    [SerializeField] float moveSpeed;
-    [SerializeField] Animator anim;
-
-    //not visible in inspector
-
-    Vector3 moveD; //moveDirection
-    float moveX;
-    float moveY;
-    bool grounded;
-
-    // Update is called once per frame
-    void Update()
+    public class PlayerMove : MonoBehaviour
     {
-        //check if on ground
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, Ground);
+        //some code from https://www.youtube.com/watch?v=f473C43s8nE
+        [TextArea][SerializeField] string notes;
 
-        if (AllowMovement)
+        [Header("Public")]
+        public float groundDrag;
+        public float playerHeight;
+        [FormerlySerializedAs("Ground")] public LayerMask ground;
+        public Rigidbody rb;
+        public bool AllowMovement { get; set; } = true; //this variable decides whether or not the player can move
+
+        [Header("Private")]
+        [SerializeField] float moveSpeed;
+        [SerializeField] Animator anim;
+
+        //not visible in inspector
+
+        Vector3 _moveD; //moveDirection
+        float _moveX;
+        float _moveY;
+        bool _grounded;
+        private static readonly int AnimMoveX = Animator.StringToHash("AnimMoveX");
+        private static readonly int AnimMoveY = Animator.StringToHash("AnimMoveY");
+
+        // Update is called once per frame
+        void Update()
         {
-            ProcessInputs();
-            SpeedControl();
+            //check if on ground
+            _grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
+
+            if (AllowMovement)
+            {
+                ProcessInputs();
+                SpeedControl();
+            }
+
+            //change drag
+            if (_grounded)
+            {
+                rb.drag = groundDrag;
+            }
+            else
+            {
+                rb.drag = 0;
+            }
+
         }
 
-        //change drag
-        if (grounded)
+        private void FixedUpdate()
         {
-            rb.drag = groundDrag;
+            //If allowmovement is true/enabled
+            if (AllowMovement)
+            {
+                Move();
+            }
         }
-        else
+        void Move()
         {
-            rb.drag = 0;
+            _moveD = new Vector3(_moveX, 0, _moveY).normalized;
+            rb.AddForce(10f * moveSpeed * _moveD, ForceMode.Force);
         }
-
-    }
-
-    private void FixedUpdate()
-    {
-        //If allowmovement is true/enabled
-        if (AllowMovement)
+        private void ProcessInputs()
         {
-            Move();
+            _moveX = Input.GetAxisRaw("Horizontal");
+            _moveY = Input.GetAxisRaw("Vertical");
+
+            //this if statement prevents the character from going back to whatever animation is the default one when standing still
+            // || and && operators explanation: https://kodify.net/csharp/if-else/if-logical-operators/
+            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+            {
+                Animate();
+            }
         }
-    }
-    void Move()
-    {
-        moveD = new Vector3(moveX, 0, moveY).normalized;
-        rb.AddForce(10f * moveSpeed * moveD, ForceMode.Force);
-    }
-    private void ProcessInputs()
-    {
-        moveX = Input.GetAxisRaw("Horizontal");
-        moveY = Input.GetAxisRaw("Vertical");
-
-        //this if statement prevents the character from going back to whatever animation is the default one when standing still
-        // || and && operators explanation: https://kodify.net/csharp/if-else/if-logical-operators/
-        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        void Animate()
         {
-            Animate();
+            //from https://www.youtube.com/watch?v=nlBwNx-CKLg
+            anim.SetFloat(AnimMoveX, _moveD.x);
+            anim.SetFloat(AnimMoveY, _moveD.z);
         }
-    }
-    void Animate()
-    {
-        //from https://www.youtube.com/watch?v=nlBwNx-CKLg
-        anim.SetFloat("AnimMoveX", moveD.x);
-        anim.SetFloat("AnimMoveY", moveD.z);
-    }
-    private void SpeedControl()
-    {
-        Vector3 flatVel = new(rb.velocity.x, 0, rb.velocity.z);
-
-        if (flatVel.magnitude > moveSpeed)
+        private void SpeedControl()
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new(limitedVel.x, rb.velocity.y, limitedVel.z);
+            var velocity = rb.velocity;
+            Vector3 flatVel = new(velocity.x, 0, velocity.z);
+
+            if (!(flatVel.magnitude > moveSpeed)) return;
+            var limitedVel = flatVel.normalized * moveSpeed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
 }

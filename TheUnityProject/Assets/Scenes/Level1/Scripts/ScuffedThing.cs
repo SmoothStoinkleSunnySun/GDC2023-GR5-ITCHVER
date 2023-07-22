@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class ScuffedThing : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    [SerializeField] StartCutscene cutsceneScript;
-
-    private void Start()
+    public class ScuffedThing : MonoBehaviour
     {
-        cutsceneScript.cutsceneToPlay = 0;
-        cutsceneScript.startCutscene();
+        [SerializeField] private StartCutscene cutsceneScript;
+
+        private void Start()
+        {
+            cutsceneScript.CutsceneToPlay = 0;
+            cutsceneScript.startCutscene();
+        }
     }
 }

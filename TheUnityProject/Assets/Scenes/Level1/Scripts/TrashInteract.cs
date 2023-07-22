@@ -1,24 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
-public class TrashInteract : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    [TextArea][SerializeField] string notes;
-
-    public UnityEvent OnInteract;
-
-    [Header("private")]
-    [SerializeField] Level1SceneStuff sceneScript;
-    [SerializeField] Collider interactionCollider; //possibly needs to be public in order for virtual void ontriggerenter to work
-    bool hasInteracted = false;
-    public virtual void OnTriggerStay(Collider other) //virtual in case we need this for another interactable
+    public class TrashInteract : MonoBehaviour
     {
-        if (!hasInteracted && other == sceneScript.playerCollider && Input.GetKey(KeyCode.E)) //keycode = wincode
+        [TextArea] [SerializeField] private string notes;
+
+        public UnityEvent onInteract;
+
+        [Header("private")] [SerializeField] private Level1SceneStuff sceneScript;
+        [SerializeField] private Collider interactionCollider;
+        private bool _hasInteracted;
+
+        public virtual void OnTriggerStay(Collider other) //virtual in case we need this for another interactable
         {
-            hasInteracted = true;
-            OnInteract.Invoke(); //Make the event happen (see inspector for what the event does)
+            if (_hasInteracted || other != sceneScript.playerCollider || !Input.GetKey(KeyCode.E))
+                return; //keycode = wincode
+            _hasInteracted = true;
+            onInteract.Invoke(); //Make the event happen (see inspector for what the event does)
         }
     }
 }

@@ -1,22 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class SpeechMachine : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    [SerializeField] float thonkTime;
-    [SerializeField] GameObject thonker;
-    [SerializeField] PlayerMove playerScript;
-    public void thinkingText()
+    public class SpeechMachine : MonoBehaviour
     {
-        StartCoroutine(thonk(thonkTime));
-    }
-    IEnumerator thonk(float timer)
-    {
-        thonker.SetActive(true);
-        yield return new WaitForSeconds(timer);
-        thonker.SetActive(false);
-        StopCoroutine(thonk(timer));
-        playerScript.AllowMovement = true;
+        [SerializeField] private float thonkTime;
+        [SerializeField] private GameObject thonker;
+        [SerializeField] private PlayerMove playerScript;
+
+        public void thinkingText()
+        {
+            StartCoroutine(thonk(thonkTime));
+        }
+
+        private IEnumerator thonk(float timer)
+        {
+            thonker.SetActive(true);
+            yield return new WaitForSeconds(timer);
+            thonker.SetActive(false);
+            StopCoroutine(thonk(timer));
+            playerScript.AllowMovement = true;
+        }
     }
 }

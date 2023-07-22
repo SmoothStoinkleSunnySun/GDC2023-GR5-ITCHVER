@@ -1,55 +1,48 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Events;
-using static ColliderTriggerTeleport;
+using static Scenes.Level1.Scripts.ColliderTriggerTeleport;
 
-public class RoomTeleporting : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    [TextArea][SerializeField] public string Notes;
-
-    [Header("Teleport Points")]
-    //the two teleport points, teleport A & B
-    public Transform TA;
-    public Transform TB;
-
-    [Header("stuff lol")]
-    [SerializeField] PlayerMove playerScript;
-    [SerializeField] Animator dark_anim;
-    [SerializeField] float timeInDark;
-
-    //teleport cooldown to prevent teleport spam    
-    public bool TeleportEnabled; //if the player is allowed to use a teleport
-
-    public void Teleport(WhichColliderIsThis colliderInQuestion)
+    public class RoomTeleporting : MonoBehaviour
     {
-        playerScript.AllowMovement = false;
+        [TextArea] [SerializeField] public string notes;
 
-        TeleportEnabled = false;
+        [Header("Teleport Points")]
+        //the two teleport points, teleport A & B
+        public Transform ta;
+        public Transform tb;
 
-        StartCoroutine(doingTeleport(colliderInQuestion));
-    }
-    IEnumerator doingTeleport(WhichColliderIsThis colliderInQuestion)
-    {
-        dark_anim.Play("fade in");
-        yield return new WaitUntil(() => dark_anim.GetCurrentAnimatorStateInfo(0).IsName("black"));
+        [Header("stuff lol")] [SerializeField] private PlayerMove playerScript;
+        [SerializeField] private Animator darkAnim;
+        [SerializeField] private float timeInDark;
 
-        if (colliderInQuestion == WhichColliderIsThis.A)
+        //teleport cooldown to prevent teleport spam    
+        public bool teleportEnabled; //if the player is allowed to use a teleport
+
+        public void Teleport(WhichColliderIsThis colliderInQuestion)
         {
-            playerScript.rb.position = TB.position;
+            playerScript.AllowMovement = false;
+
+            teleportEnabled = false;
+
+            StartCoroutine(doingTeleport(colliderInQuestion));
         }
-        else if (colliderInQuestion == WhichColliderIsThis.B)
+
+        private IEnumerator doingTeleport(WhichColliderIsThis colliderInQuestion)
         {
-            playerScript.rb.position = TA.position;
-        }       
-        yield return new WaitForSeconds(timeInDark);
-        dark_anim.Play("fade out");
+            darkAnim.Play("fade in");
+            yield return new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
 
-        TeleportEnabled = true;
-        playerScript.AllowMovement = true;
-        StopCoroutine(doingTeleport(colliderInQuestion));
+            if (colliderInQuestion == WhichColliderIsThis.A)
+                playerScript.rb.position = tb.position;
+            else if (colliderInQuestion == WhichColliderIsThis.B) playerScript.rb.position = ta.position;
+            yield return new WaitForSeconds(timeInDark);
+            darkAnim.Play("fade out");
+
+            teleportEnabled = true;
+            playerScript.AllowMovement = true;
+            StopCoroutine(doingTeleport(colliderInQuestion));
+        }
     }
-
 }

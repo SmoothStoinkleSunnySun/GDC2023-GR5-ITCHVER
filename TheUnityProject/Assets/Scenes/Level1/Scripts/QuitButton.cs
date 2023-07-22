@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class QuitButton : MonoBehaviour
 {
+    //lmao commented code city
     bool amPaused;
     bool menu = false;
     bool ending = false;

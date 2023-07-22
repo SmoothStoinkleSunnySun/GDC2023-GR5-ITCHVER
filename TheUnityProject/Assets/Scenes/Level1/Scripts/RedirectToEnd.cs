@@ -1,33 +1,32 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class RedirectToEnd : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    bool notEntered = true;
-    private void OnTriggerEnter(Collider other)
+    public class RedirectToEnd : MonoBehaviour
     {
-        if (other.CompareTag("Player") && notEntered)
+        bool _notEntered = true;
+        private void OnTriggerEnter(Collider other)
         {
+            if (!other.CompareTag("Player") || !_notEntered) return;
             StartCoroutine(RedirectToAScene());
-            notEntered = false;
+            _notEntered = false;
             GameObject.FindGameObjectWithTag("Speedrunner").GetComponent<SpeedRunModeTracker>().stopTimer();
         }
-    }
 
-    private IEnumerator RedirectToAScene()
-    {
-        //from https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html        
-        //using scenebuildindex is for nerds
-
-        //load the scene
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync($"Ending");
-
-        // Wait until the asynchronous scene fully loads
-        while (!asyncLoad.isDone)
+        private IEnumerator RedirectToAScene()
         {
-            yield return null;
+            //from https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html        
+            //using scenebuildindex is for nerds
+
+            //load the scene
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync($"Ending");
+
+            // Wait until the asynchronous scene fully loads
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
         }
     }
 }

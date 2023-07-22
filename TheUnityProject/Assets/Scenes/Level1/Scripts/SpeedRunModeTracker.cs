@@ -1,58 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Globalization;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-
-public class SpeedRunModeTracker : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    [SerializeField] TextMeshProUGUI tmptxt;
-    [SerializeField] GameObject coolCanvas;
-    [SerializeField] Toggle toggler;
+    public class SpeedRunModeTracker : MonoBehaviour
+    {
+        [SerializeField] private TextMeshProUGUI tmptxt;
+        [SerializeField] GameObject coolCanvas;
+        [SerializeField] Toggle toggler;
 
-    public bool speedrunEnabled { get; set; }
-    bool counting = false;
-    float runTimer;
-    private void FixedUpdate()
-    {
-        if (speedrunEnabled && counting)
+        private bool SpeedrunEnabled { get; set; }
+        bool _counting;
+        float _runTimer;
+        private void FixedUpdate()
         {
-            runTimer += Time.deltaTime; //this is a very long float to display
-            tmptxt.text = runTimer.ToString();
+            if (!SpeedrunEnabled || !_counting) return;
+            _runTimer += Time.deltaTime; //this is a very long float to display
+            tmptxt.text = _runTimer.ToString(CultureInfo.InvariantCulture);
         }
-    }
-    public void startTimer()
-    {
-        if (speedrunEnabled)
+        public void startTimer()
         {
+            if (!SpeedrunEnabled) return;
             coolCanvas.SetActive(true);
-            counting = true;
+            _counting = true;
         }
-    }
-    public void stopTimer()
-    {
-        counting = false;
-    }
-    public static SpeedRunModeTracker Instance
-    {
-        get;
-        set;
-    }
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-        Instance = this;
-    }
-    public void checkForToggle()
-    {
-        if (toggler.isOn)
+        public void stopTimer()
         {
-            speedrunEnabled = true;
-
+            _counting = false;
         }
-        else if (!toggler.isOn)
+        public static SpeedRunModeTracker Instance
         {
-            speedrunEnabled = false;
+            get;
+            set;
+        }
+        void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        }
+        public void checkForToggle()
+        {
+            SpeedrunEnabled = toggler.isOn switch //lol this looks funny
+            {
+                true => true,
+                false => false
+            };
         }
     }
 }

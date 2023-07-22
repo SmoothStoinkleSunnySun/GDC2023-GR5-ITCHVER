@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class scuffedStartSpeedrunTimer : MonoBehaviour
+namespace Scenes.Level1.Scripts
 {
-    
-    private void Awake()
+    public class scuffedStartSpeedrunTimer : MonoBehaviour
     {
-        GameObject.FindGameObjectWithTag("Speedrunner").GetComponent<SpeedRunModeTracker>().startTimer();
+        private void Awake()
+        {
+            GameObject.FindGameObjectWithTag("Speedrunner").GetComponent<SpeedRunModeTracker>().startTimer();
+        }
     }
 }
