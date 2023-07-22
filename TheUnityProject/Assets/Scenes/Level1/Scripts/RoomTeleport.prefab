@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26de7db2b98b49d40bcf88bf02e82f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisCollider: 0
-  MyRoomTeleport: {fileID: 376801475391083125}
+  thisCollider: 0
+  myRoomTeleport: {fileID: 376801475391083125}
 --- !u!1 &5014035597656447657
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,8 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26de7db2b98b49d40bcf88bf02e82f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisCollider: 1
-  MyRoomTeleport: {fileID: 376801475391083125}
+  thisCollider: 1
+  myRoomTeleport: {fileID: 376801475391083125}
 --- !u!1 &9205337325216188942
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ Transform:
   - {fileID: 7527768333778929439}
   - {fileID: 1867828698753154248}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &376801475391083125
 MonoBehaviour:
@@ -246,10 +246,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc2eb143b15ac74595ccbb053d105e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes: 
-  TA: {fileID: 8243162074180202072}
-  TB: {fileID: 372659696941172852}
+  notes: 
+  ta: {fileID: 8243162074180202072}
+  tb: {fileID: 372659696941172852}
   playerScript: {fileID: 0}
-  dark_anim: {fileID: 0}
+  darkAnim: {fileID: 0}
   timeInDark: 2.5
-  TeleportEnabled: 1
+  teleportEnabled: 0
