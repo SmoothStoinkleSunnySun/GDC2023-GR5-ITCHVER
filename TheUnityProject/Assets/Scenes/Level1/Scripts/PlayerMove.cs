@@ -54,16 +54,18 @@ namespace Scenes.Level1.Scripts
         {
             _moveD = new Vector3(_moveX, 0, _moveY).normalized;
             rb.AddForce(10f * moveSpeed * _moveD, ForceMode.Force);
+
+            //this if statement prevents the character from going back to whatever animation is the default one when standing still
+            // || and && operators explanation: https://kodify.net/csharp/if-else/if-logical-operators/
+            //this was previously in ProcessInputs(), but not sure if it did anything to fix the 'laggy' player movement
+            //in other words, my fps is so high that I can't see the difference lmao
+            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) Animate();
         }
 
         private void ProcessInputs()
         {
             _moveX = Input.GetAxisRaw("Horizontal");
             _moveY = Input.GetAxisRaw("Vertical");
-
-            //this if statement prevents the character from going back to whatever animation is the default one when standing still
-            // || and && operators explanation: https://kodify.net/csharp/if-else/if-logical-operators/
-            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) Animate();
         }
 
         private void Animate()
