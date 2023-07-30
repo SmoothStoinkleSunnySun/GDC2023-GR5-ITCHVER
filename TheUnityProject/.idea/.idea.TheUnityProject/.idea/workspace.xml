@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="098163ea-c3ba-49a1-aaf4-8dbd801cb3be" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheUnityProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheUnityProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/PlayerMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/PlayerMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/RoomTeleporting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/RoomTeleporting.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +105,7 @@
       <workItem from="1690054423353" duration="7011000" />
       <workItem from="1690113955067" duration="2671000" />
       <workItem from="1690366052020" duration="1513000" />
+      <workItem from="1690727186885" duration="2155000" />
     </task>
     <servers />
   </component>
@@ -115,5 +117,24 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/RoomTeleporting.cs</url>
+          <line>114</line>
+          <properties documentPath="C:\Users\Charlotte\GDC2023-GR5-ITCHVER\TheUnityProject\Assets\Scenes\Level1\Scripts\RoomTeleporting.cs" initialLine="109" containingFunctionPresentation="Method 'CheckDirection'">
+            <startOffsets>
+              <option value="3958" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4002" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

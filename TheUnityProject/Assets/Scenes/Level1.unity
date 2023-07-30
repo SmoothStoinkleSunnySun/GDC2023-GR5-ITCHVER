@@ -49822,6 +49822,16 @@ PrefabInstance:
       objectReference: {fileID: 998285448}
     - target: {fileID: 376801475391083125, guid: 1f5c2f6b8e32466428ba60574a73fd81,
         type: 3}
+      propertyPath: AexitDirection
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 376801475391083125, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
+      propertyPath: BexitDirection
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 376801475391083125, guid: 1f5c2f6b8e32466428ba60574a73fd81,
+        type: 3}
       propertyPath: teleportEnabled
       value: 1
       objectReference: {fileID: 0}

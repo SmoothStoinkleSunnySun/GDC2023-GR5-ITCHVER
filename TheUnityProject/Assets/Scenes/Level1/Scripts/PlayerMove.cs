@@ -14,7 +14,7 @@ namespace Scenes.Level1.Scripts
         public bool AllowMovement { get; set; } = true; //this variable decides whether or not the player can move
 
         [Header("Private")] [SerializeField] private float moveSpeed;
-        [SerializeField] private Animator anim;
+        public Animator anim;
 
         //not visible in inspector
 
@@ -68,6 +68,7 @@ namespace Scenes.Level1.Scripts
             _moveY = Input.GetAxisRaw("Vertical");
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private void Animate()
         {
             //from https://www.youtube.com/watch?v=nlBwNx-CKLg
