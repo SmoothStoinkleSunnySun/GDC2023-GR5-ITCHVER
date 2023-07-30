@@ -1,0 +1,4 @@
+This is a bad way of doing this because the only thing that changes is the number on the diffuse texture.
+The game essentially has to load in 5 different box materials with different albedoTransparency textures instead of 1 material with 4 different decal textures.
+
+Unfortunately I am too lazy to figure out how Unity does decal textures, and this game isn't super optimized anyways
