@@ -13,6 +13,7 @@ namespace Scenes.Level1.Scripts
         private struct Cutscenes
         {
             public Sprite[] sprites;
+            public AudioClip memoMusic;
         }
 
         [SerializeField] private Cutscenes[] coolCutscenes;
@@ -43,6 +44,9 @@ namespace Scenes.Level1.Scripts
 
         private IEnumerator imageIntervals(float timer)
         {
+            audSource.SetActive(true);
+            audSourceAudio.clip = coolCutscenes[CutsceneToPlay].memoMusic;
+            audSourceAudio.Play();
             for (var i = 0; i < coolCutscenes[CutsceneToPlay].sprites.Length; i++)
             {
                 darkAnim.Play("fade in");
