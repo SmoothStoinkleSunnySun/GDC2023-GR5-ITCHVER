@@ -20,10 +20,11 @@ namespace Scenes.Level1.Scripts
         [SerializeField] Cutscenes[] coolCutscenes;
 
         [SerializeField] float imageTimer;
-        [FormerlySerializedAs("dark_anim")] [SerializeField] Animator darkAnim;
+        [SerializeField] Animator darkAnim;
         [SerializeField] Image img;
         [SerializeField] PlayerMove playerScript;
         [SerializeField] bool isStartCutscene;
+        [SerializeField] private AudioSource audSource;
         public int CutsceneToPlay { get; set; }
 
         public void startCutscene()
@@ -37,7 +38,14 @@ namespace Scenes.Level1.Scripts
 
         // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator imageIntervals(float timer)
-        {       
+        {
+            var originalVol = audSource.volume;
+            audSource.volume = 0;
+            while (audSource.volume < originalVol)
+            {
+                audSource.volume += 0.08f;
+                yield return new WaitForSeconds(0.2f);
+            }
             foreach (var t in coolCutscenes[CutsceneToPlay].sprites)
             {
                 darkAnim.Play("fade in");
@@ -53,20 +61,16 @@ namespace Scenes.Level1.Scripts
                 yield return new WaitForSeconds(timer);
             }
             darkAnim.Play("fade in");
+            while (audSource.volume > 0)
+            {
+                audSource.volume -= 0.06f;
+                yield return new WaitForSeconds(0.2f);
+            }
             yield return new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
-            img.enabled = false;
-            darkAnim.Play("fade out");
-            if (!isStartCutscene)
-            {
-                playerScript.AllowMovement = true;
-            }
+            StartCoroutine(RedirectToAScene());
+            //called a total of 1 times in the game
+            GameObject.FindGameObjectWithTag("Speedrunner").GetComponent<SpeedRunModeTracker>().stopTimer();
 
-            if (isStartCutscene)
-            {
-                StartCoroutine(RedirectToAScene());
-                //called a total of 1 times in the game
-                GameObject.FindGameObjectWithTag("Speedrunner").GetComponent<SpeedRunModeTracker>().stopTimer();
-            }
             StopCoroutine(imageIntervals(timer));
         }
         private IEnumerator RedirectToAScene()

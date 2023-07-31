@@ -319,7 +319,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Det der er tilbage
 
-    What remains'
+    The remaining pieces'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: da0cb89ea8b77334d8f66e36b5d84da6, type: 2}
   m_sharedMaterial: {fileID: 669460580678257092, guid: da0cb89ea8b77334d8f66e36b5d84da6,

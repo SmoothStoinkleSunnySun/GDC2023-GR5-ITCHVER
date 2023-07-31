@@ -6,11 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="098163ea-c3ba-49a1-aaf4-8dbd801cb3be" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheUnityProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheUnityProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ending.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ending.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Global Volume Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Global Volume Profile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/ColliderTriggerTeleport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/ColliderTriggerTeleport.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Visual/Fonts/NotoSansLaoLooped-VariableFont_wdth,wght SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Visual/Fonts/NotoSansLaoLooped-VariableFont_wdth,wght SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/Cutscene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/Cutscene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/DeathHue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/DeathHue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/QuitButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/QuitButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/StartCutscene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/StartCutscene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StartCutscene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StartCutscene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +117,7 @@
       <workItem from="1690113955067" duration="2671000" />
       <workItem from="1690366052020" duration="1513000" />
       <workItem from="1690727186885" duration="2749000" />
-      <workItem from="1690787346480" duration="5803000" />
+      <workItem from="1690787346480" duration="12401000" />
     </task>
     <servers />
   </component>

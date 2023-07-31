@@ -23,8 +23,8 @@ namespace Scenes.Level1.Scripts
         [SerializeField] private PlayerMove playerScript;
         [SerializeField] private GameObject ambiences; //lmao
         [SerializeField] private AudioSource sfxA;
-        [SerializeField] private AudioClip endFlash;
         [SerializeField] private GameObject audSource;
+        [SerializeField] private AudioSource audSourceAudio;
         public int CutsceneToPlay { get; set; }
         public static Cutscene Instance { get; set; }
 
@@ -51,7 +51,7 @@ namespace Scenes.Level1.Scripts
                 if (!img.enabled) img.enabled = true;
 
                 img.sprite = coolCutscenes[CutsceneToPlay].sprites[i];
-                if (i == coolCutscenes[CutsceneToPlay].sprites.Length - 1) sfxA.PlayOneShot(endFlash);
+                if (i == coolCutscenes[CutsceneToPlay].sprites.Length - 1) sfxA.Play();
                 darkAnim.Play("fade out");
                 yield return new WaitForSeconds(timer);
             }
@@ -62,6 +62,11 @@ namespace Scenes.Level1.Scripts
             darkAnim.Play("fade out");
             playerScript.AllowMovement = true;
             ambiences.SetActive(true);
+            while (audSourceAudio.volume > 0)
+            {
+                audSourceAudio.volume -= 0.06f;
+                yield return new WaitForSeconds(0.2f);
+            }
             audSource.SetActive(false);
 
             StopCoroutine(imageIntervals(timer));
