@@ -11,6 +11,7 @@ namespace Scenes.Level1.Scripts
         private bool _ending;
         [SerializeField] GameObject pauseUi;
         [SerializeField] private Animator ratSpin;
+        [SerializeField] private audioArray audScript;
 
         [SerializeField] private UnityEvent pauseEnter;
         [SerializeField] private UnityEvent pauseExit;
@@ -53,7 +54,10 @@ namespace Scenes.Level1.Scripts
                 pauseUi.SetActive(false);
                 //"comparing to null is expensive" they said,
                 if (ReferenceEquals(ratSpin, null)) return;
-                ratSpin.speed += (float)0.2;
+                var speed = ratSpin.speed;
+                speed += (float)0.2;
+                ratSpin.speed = speed;
+                audScript.spinspeed = speed;
             }
             else if (!_menu && !_ending)
             {
