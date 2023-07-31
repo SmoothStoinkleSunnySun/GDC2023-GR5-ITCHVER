@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Scenes.Level1.Scripts
 {
@@ -11,8 +10,8 @@ namespace Scenes.Level1.Scripts
             B
         }
 
-        [FormerlySerializedAs("ThisCollider")] [SerializeField] WhichColliderIsThis thisCollider;
-        [FormerlySerializedAs("MyRoomTeleport")] [SerializeField] RoomTeleporting myRoomTeleport;
+        [SerializeField] WhichColliderIsThis thisCollider;
+        [SerializeField] RoomTeleporting myRoomTeleport;
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player") && myRoomTeleport.teleportEnabled)
