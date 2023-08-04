@@ -45,28 +45,28 @@ namespace Scenes.Level1.Scripts
             teleportEnabled = false;
 
             StartCoroutine(doingTeleport(colliderInQuestion));
-        }
-
-        private IEnumerator doingTeleport(WhichColliderIsThis colliderInQuestion)
-        {
-            darkAnim.Play("fade in");
-            yield return new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
-
-            if (colliderInQuestion == WhichColliderIsThis.A)
-                playerScript.rb.position = tb.position;
-            else if (colliderInQuestion == WhichColliderIsThis.B) playerScript.rb.position = ta.position;
-            yield return new WaitForSeconds(timeInDark);
-            darkAnim.Play("fade out");
-
-            teleportEnabled = true;
-            playerScript.AllowMovement = true;
             
-            //Entering from point A to exitdirection point B
-            if (AexitDirection != ExitD.None && colliderInQuestion == WhichColliderIsThis.A) CheckDirection(BexitDirection);
-            if (BexitDirection != ExitD.None && colliderInQuestion == WhichColliderIsThis.B) CheckDirection(AexitDirection);
-            StopCoroutine(doingTeleport(colliderInQuestion));
-        }
+            IEnumerator doingTeleport(WhichColliderIsThis colliderInQuestion)
+            {
+                darkAnim.Play("fade in");
+                yield return new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
 
+                if (colliderInQuestion == WhichColliderIsThis.A)
+                    playerScript.rb.position = tb.position;
+                else if (colliderInQuestion == WhichColliderIsThis.B) playerScript.rb.position = ta.position;
+                yield return new WaitForSeconds(timeInDark);
+                darkAnim.Play("fade out");
+
+                teleportEnabled = true;
+                playerScript.AllowMovement = true;
+            
+                //Entering from point A to exitdirection point B
+                if (AexitDirection != ExitD.None && colliderInQuestion == WhichColliderIsThis.A) CheckDirection(BexitDirection);
+                if (BexitDirection != ExitD.None && colliderInQuestion == WhichColliderIsThis.B) CheckDirection(AexitDirection);
+                
+                StopCoroutine(doingTeleport(colliderInQuestion));
+            }
+        }
         private void CheckDirection(ExitD pointDirection)
         {
             float xVal = 0;

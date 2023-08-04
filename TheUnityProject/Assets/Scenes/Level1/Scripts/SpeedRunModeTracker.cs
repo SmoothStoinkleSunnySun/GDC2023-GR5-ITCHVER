@@ -11,12 +11,23 @@ namespace Scenes.Level1.Scripts
         [SerializeField] Toggle toggler;
 
         private bool SpeedrunEnabled { get; set; }
-        bool _counting;
-        float _runTimer;
+        private bool _counting;
+        private float _runTimer;
+        private readonly float _deltaTime = Time.deltaTime;
+        public static SpeedRunModeTracker Instance
+        {
+            get;
+            set;
+        }
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        }
         private void FixedUpdate()
         {
             if (!SpeedrunEnabled || !_counting) return;
-            _runTimer += Time.deltaTime; //this is a very long float to display
+            _runTimer += _deltaTime; //this is a very long float to display
             tmptxt.text = _runTimer.ToString(CultureInfo.InvariantCulture);
         }
         public void startTimer()
@@ -28,16 +39,6 @@ namespace Scenes.Level1.Scripts
         public void stopTimer()
         {
             _counting = false;
-        }
-        public static SpeedRunModeTracker Instance
-        {
-            get;
-            set;
-        }
-        void Awake()
-        {
-            DontDestroyOnLoad(gameObject);
-            Instance = this;
         }
         public void checkForToggle()
         {

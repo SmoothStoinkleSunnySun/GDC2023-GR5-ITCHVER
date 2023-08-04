@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 namespace Scenes.Level1.Scripts
@@ -11,8 +12,7 @@ namespace Scenes.Level1.Scripts
         [Header("private")] [SerializeField] private Level1SceneStuff sceneScript;
         [SerializeField] private Collider interactionCollider;
         private bool _hasInteracted;
-
-        public virtual void OnTriggerStay(Collider other) //virtual in case we need this for another interactable
+        public void OnTriggerStay(Collider other)
         {
             if (_hasInteracted || other != sceneScript.playerCollider || !Input.GetKey(KeyCode.E))
                 return; //keycode = wincode

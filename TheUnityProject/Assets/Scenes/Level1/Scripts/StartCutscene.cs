@@ -8,7 +8,9 @@ namespace Scenes.Level1.Scripts
 {
     public class StartCutscene: MonoBehaviour
     {
-        //helo this is cutscene be nice idk
+        //Lmao this script is scuffed and honestly doesn't need to be optimized due to living in its own scene
+        //Have fun reading
+        
         [TextArea][SerializeField] string notes;
 
         [Serializable]

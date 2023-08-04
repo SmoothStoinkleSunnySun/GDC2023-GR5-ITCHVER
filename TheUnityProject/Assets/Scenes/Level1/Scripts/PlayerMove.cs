@@ -37,6 +37,24 @@ namespace Scenes.Level1.Scripts
                 SpeedControl();
             }
 
+            // Hello dear inexperienced c# programmer,
+            // you can put in methods like this that are only called by 1 other method to make your
+            // code cleaner to read. No, these aren't called every Update(), only if the if statement allows it
+            void ProcessInputs()
+            {
+                _moveX = Input.GetAxisRaw("Horizontal");
+                _moveY = Input.GetAxisRaw("Vertical");
+            }
+            void SpeedControl()
+            {
+                var velocity = rb.velocity;
+                Vector3 flatVel = new(velocity.x, 0, velocity.z);
+
+                if (!(flatVel.magnitude > moveSpeed)) return;
+                var limitedVel = flatVel.normalized * moveSpeed;
+                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            }
+            
             //change drag
             if (_grounded)
                 rb.drag = groundDrag;
@@ -48,42 +66,25 @@ namespace Scenes.Level1.Scripts
         {
             //If allowmovement is true/enabled
             if (AllowMovement) Move();
-        }
+            
+            void Move()
+            {
+                _moveD = new Vector3(_moveX, 0, _moveY).normalized;
+                rb.AddForce(10f * moveSpeed * _moveD, ForceMode.Force);
 
-        private void Move()
-        {
-            _moveD = new Vector3(_moveX, 0, _moveY).normalized;
-            rb.AddForce(10f * moveSpeed * _moveD, ForceMode.Force);
-
-            //this if statement prevents the character from going back to whatever animation is the default one when standing still
-            // || and && operators explanation: https://kodify.net/csharp/if-else/if-logical-operators/
-            //this was previously in ProcessInputs(), but not sure if it did anything to fix the 'laggy' player movement
-            //in other words, my fps is so high that I can't see the difference lmao
-            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) Animate();
-        }
-
-        private void ProcessInputs()
-        {
-            _moveX = Input.GetAxisRaw("Horizontal");
-            _moveY = Input.GetAxisRaw("Vertical");
-        }
-
-        // ReSharper disable Unity.PerformanceAnalysis
-        private void Animate()
-        {
-            //from https://www.youtube.com/watch?v=nlBwNx-CKLg
-            anim.SetFloat(AnimMoveX, _moveD.x);
-            anim.SetFloat(AnimMoveY, _moveD.z);
-        }
-
-        private void SpeedControl()
-        {
-            var velocity = rb.velocity;
-            Vector3 flatVel = new(velocity.x, 0, velocity.z);
-
-            if (!(flatVel.magnitude > moveSpeed)) return;
-            var limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+                //this if statement prevents the character from going back to whatever animation is the default one when standing still
+                // || and && operators explanation: https://kodify.net/csharp/if-else/if-logical-operators/
+                //this was previously in ProcessInputs(), but not sure if it did anything to fix the 'laggy' player movement
+                //in other words, my fps is so high that I can't see the difference lmao
+                if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) Animate();
+                
+                void Animate()
+                {
+                    //from https://www.youtube.com/watch?v=nlBwNx-CKLg
+                    anim.SetFloat(AnimMoveX, _moveD.x);
+                    anim.SetFloat(AnimMoveY, _moveD.z);
+                }
+            }
         }
     }
 }

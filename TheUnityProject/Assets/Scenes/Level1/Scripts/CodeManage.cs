@@ -51,6 +51,7 @@ namespace Scenes.Level1.Scripts
 
         public void startCage()
         {
+            //I swear I saw some tip on how to call this without needing to wrap it in a void method but aaa whatever
             StartCoroutine(messWithCageDoor());
         }
 

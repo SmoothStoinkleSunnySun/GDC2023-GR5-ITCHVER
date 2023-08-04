@@ -11,15 +11,15 @@ namespace Scenes.Level1.Scripts
         public void thinkingText()
         {
             StartCoroutine(thonk(thonkTime));
-        }
-
-        private IEnumerator thonk(float timer)
-        {
-            thonker.SetActive(true);
-            yield return new WaitForSeconds(timer);
-            thonker.SetActive(false);
-            StopCoroutine(thonk(timer));
-            playerScript.AllowMovement = true;
+            
+            IEnumerator thonk(float timer)
+            {
+                thonker.SetActive(true);
+                yield return new WaitForSeconds(timer);
+                thonker.SetActive(false);
+                StopCoroutine(thonk(timer));
+                playerScript.AllowMovement = true;
+            }
         }
     }
 }

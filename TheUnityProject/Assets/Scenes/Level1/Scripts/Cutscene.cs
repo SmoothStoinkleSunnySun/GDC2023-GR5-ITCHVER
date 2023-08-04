@@ -26,6 +26,11 @@ namespace Scenes.Level1.Scripts
         [SerializeField] private AudioSource sfxA;
         [SerializeField] private GameObject audSource;
         [SerializeField] private AudioSource audSourceAudio;
+        
+        //private hidden
+        private WaitUntil _waitForBlack;
+        
+        //public
         public int CutsceneToPlay { get; set; }
         public static Cutscene Instance { get; set; }
 
@@ -33,6 +38,7 @@ namespace Scenes.Level1.Scripts
         {
             DontDestroyOnLoad(gameObject);
             Instance = this;
+            _waitForBlack = new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
         }
 
         public void startCutscene()
@@ -40,40 +46,47 @@ namespace Scenes.Level1.Scripts
             StartCoroutine(imageIntervals(imageTimer));
             playerScript.AllowMovement = false;
             ambiences.SetActive(false);
-        }
-
-        private IEnumerator imageIntervals(float timer)
-        {
-            audSource.SetActive(true);
-            audSourceAudio.clip = coolCutscenes[CutsceneToPlay].memoMusic;
-            audSourceAudio.Play();
-            for (var i = 0; i < coolCutscenes[CutsceneToPlay].sprites.Length; i++)
+            
+            IEnumerator imageIntervals(float timer)
             {
+                audSource.SetActive(true);
+                audSourceAudio.clip = coolCutscenes[CutsceneToPlay].memoMusic;
+                audSourceAudio.Play();
+            
+                var imgTime = new WaitForSeconds(timer);
+
+                for (var i = 0; i < coolCutscenes[CutsceneToPlay].sprites.Length; i++)
+                {
+                    darkAnim.Play("fade in");
+                    yield return _waitForBlack;
+
+                    if (!img.enabled) img.enabled = true;
+
+                    img.sprite = coolCutscenes[CutsceneToPlay].sprites[i];
+                    if (i == coolCutscenes[CutsceneToPlay].sprites.Length - 1) sfxA.Play();
+                    darkAnim.Play("fade out");
+                    yield return imgTime;
+                }
+
                 darkAnim.Play("fade in");
-                yield return new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
-
-                if (!img.enabled) img.enabled = true;
-
-                img.sprite = coolCutscenes[CutsceneToPlay].sprites[i];
-                if (i == coolCutscenes[CutsceneToPlay].sprites.Length - 1) sfxA.Play();
+                yield return _waitForBlack;
+                img.enabled = false;
                 darkAnim.Play("fade out");
-                yield return new WaitForSeconds(timer);
-            }
+                playerScript.AllowMovement = true;
+                ambiences.SetActive(true);
+            
+                //I could make this a Real Variable TM but doing this is just easier for me lmao
+                var waitABit = new WaitForSeconds(0.2f);
+            
+                while (audSourceAudio.volume > 0)
+                {
+                    audSourceAudio.volume -= 0.06f;
+                    yield return waitABit;
+                }
+                audSource.SetActive(false);
 
-            darkAnim.Play("fade in");
-            yield return new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
-            img.enabled = false;
-            darkAnim.Play("fade out");
-            playerScript.AllowMovement = true;
-            ambiences.SetActive(true);
-            while (audSourceAudio.volume > 0)
-            {
-                audSourceAudio.volume -= 0.06f;
-                yield return new WaitForSeconds(0.2f);
+                StopCoroutine(imageIntervals(timer));
             }
-            audSource.SetActive(false);
-
-            StopCoroutine(imageIntervals(timer));
         }
     }
 }
