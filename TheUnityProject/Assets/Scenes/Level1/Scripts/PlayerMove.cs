@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 namespace Scenes.Level1.Scripts
@@ -25,7 +26,12 @@ namespace Scenes.Level1.Scripts
         private static readonly int AnimMoveX = Animator.StringToHash("AnimMoveX");
         private static readonly int AnimMoveY = Animator.StringToHash("AnimMoveY");
 
-        // Update is called once per frame
+        private void Start()
+        {
+            anim.SetFloat(AnimMoveX, 0);
+            anim.SetFloat(AnimMoveY, 1);
+        }
+
         private void Update()
         {
             //check if on ground
@@ -83,6 +89,7 @@ namespace Scenes.Level1.Scripts
                     //from https://www.youtube.com/watch?v=nlBwNx-CKLg
                     anim.SetFloat(AnimMoveX, _moveD.x);
                     anim.SetFloat(AnimMoveY, _moveD.z);
+                    anim.Play("Walk", 2);
                 }
             }
         }
