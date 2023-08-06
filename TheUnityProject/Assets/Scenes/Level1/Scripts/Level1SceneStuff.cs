@@ -38,19 +38,19 @@ namespace Scenes.Level1.Scripts
                 
                 while (true)
                 {
-                    playerAnim.Play("Idle Tail", 1);
+                    playerAnim.Play("Idle Tail", 2);
                     yield return randomTime1;
-                    playerAnim.Play("Idle Tail",1);
+                    playerAnim.Play("Idle Tail",2);
                     yield return randomTime2;
-                    playerAnim.Play("Idle Tail", 1);
+                    playerAnim.Play("Idle Tail", 2);
                     yield return randomTime3;
                 }
             }
             IEnumerator FallingScuffed()
             {
-                playerAnim.Play("Falling", 3);
+                playerAnim.Play("Falling", 4);
                 yield return new WaitForSeconds(1.71f);
-                playerAnim.Play("Nothing", 3);
+                playerAnim.Play("Nothing", 4);
                 StopCoroutine(FallingScuffed());
             }
         }

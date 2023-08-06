@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 namespace Scenes.Level1.Scripts
@@ -13,9 +12,10 @@ namespace Scenes.Level1.Scripts
         [FormerlySerializedAs("Ground")] public LayerMask ground;
         public Rigidbody rb;
         public bool AllowMovement { get; set; } = true; //this variable decides whether or not the player can move
-
-        [Header("Private")] [SerializeField] private float moveSpeed;
         public Animator anim;
+
+        [Header("Private")]
+        [SerializeField] private float moveSpeed;
 
         //not visible in inspector
 
@@ -25,6 +25,8 @@ namespace Scenes.Level1.Scripts
         private bool _grounded;
         private static readonly int AnimMoveX = Animator.StringToHash("AnimMoveX");
         private static readonly int AnimMoveY = Animator.StringToHash("AnimMoveY");
+        private static readonly int BreathSpeed = Animator.StringToHash("BreathSpeed");
+        private float _breathingSpeed;
 
         private void Start()
         {
@@ -66,31 +68,40 @@ namespace Scenes.Level1.Scripts
                 rb.drag = groundDrag;
             else
                 rb.drag = 0;
+
+            if (AllowMovement && (_moveX != 0 || _moveY != 0)) Animate();
+            //This was previously in ProcessInputs, then in FixedUpdate, now here
+            // Originally did not include extra movement direction calculation
+            void Animate()
+            {
+                _moveD = new Vector3(_moveX, 0, _moveY).normalized;
+                anim.Play("Walk_new", 3);
+                anim.SetFloat(AnimMoveX, _moveD.x);
+                anim.SetFloat(AnimMoveY, _moveD.z);
+            }
         }
 
         private void FixedUpdate()
         {
-            //If allowmovement is true/enabled
+            //If AllowMovement is true/enabled
             if (AllowMovement) Move();
             
             void Move()
             {
                 _moveD = new Vector3(_moveX, 0, _moveY).normalized;
                 rb.AddForce(10f * moveSpeed * _moveD, ForceMode.Force);
-
-                //this if statement prevents the character from going back to whatever animation is the default one when standing still
-                // || and && operators explanation: https://kodify.net/csharp/if-else/if-logical-operators/
-                //this was previously in ProcessInputs(), but not sure if it did anything to fix the 'laggy' player movement
-                //in other words, my fps is so high that I can't see the difference lmao
-                if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) Animate();
-                
-                void Animate()
-                {
-                    //from https://www.youtube.com/watch?v=nlBwNx-CKLg
-                    anim.SetFloat(AnimMoveX, _moveD.x);
-                    anim.SetFloat(AnimMoveY, _moveD.z);
-                    anim.Play("Walk", 2);
-                }
+            }
+            
+            //breathing speed control
+            if (AllowMovement && (_moveX != 0 || _moveY != 0))
+            {
+                if (_breathingSpeed < 4.5) _breathingSpeed += 0.015f;
+            }
+            else
+            {
+                anim.SetFloat(BreathSpeed, _breathingSpeed);
+                if (_breathingSpeed > 1 && _breathingSpeed != 1) _breathingSpeed -= 0.005f;
+                else _breathingSpeed = 1; 
             }
         }
     }

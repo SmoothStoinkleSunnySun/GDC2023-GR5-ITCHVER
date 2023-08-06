@@ -8,6 +8,7 @@ namespace Scenes.Level1.Scripts
     {
         [SerializeField] private Volume volume;
         private bool _redhueInUse;
+        [SerializeField] private AudioSource pauseAmbience;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -19,7 +20,7 @@ namespace Scenes.Level1.Scripts
         {
             volume.profile.TryGet(out ColorAdjustments colorAdjustments);
             colorAdjustments.active = true;
-            
+            pauseAmbience.Pause();
             //this code doesn't work and idk why
             /*
             colorAdjustments.active = true;
@@ -43,6 +44,7 @@ namespace Scenes.Level1.Scripts
             */
             yield return new WaitForSeconds(3);
             colorAdjustments.active = false;
+            pauseAmbience.UnPause();
             _redhueInUse = false;
             StopCoroutine(redHueTime());
         }

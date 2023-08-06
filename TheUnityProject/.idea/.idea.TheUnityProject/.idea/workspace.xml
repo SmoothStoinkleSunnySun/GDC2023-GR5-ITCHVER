@@ -8,8 +8,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheUnityProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheUnityProject/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Animations/Player/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Animations/Player/Player.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/DeathHue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/DeathHue.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/Level1SceneStuff.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/Level1SceneStuff.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/PlayerMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/PlayerMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/SpeedRunModeTracker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/SpeedRunModeTracker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/lvl3_ColliderTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/lvl3_ColliderTrigger.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +120,7 @@
       <workItem from="1690829386989" duration="950000" />
       <workItem from="1691178596649" duration="2722000" />
       <workItem from="1691253701447" duration="3963000" />
+      <workItem from="1691319775434" duration="18930000" />
     </task>
     <servers />
   </component>

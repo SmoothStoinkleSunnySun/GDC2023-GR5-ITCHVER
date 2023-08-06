@@ -13,7 +13,7 @@ namespace Scenes.Level1.Scripts
         private bool SpeedrunEnabled { get; set; }
         private bool _counting;
         private float _runTimer;
-        private readonly float _deltaTime = Time.deltaTime;
+        private float _deltaTime;
         public static SpeedRunModeTracker Instance
         {
             get;
@@ -23,6 +23,7 @@ namespace Scenes.Level1.Scripts
         {
             DontDestroyOnLoad(gameObject);
             Instance = this;
+            _deltaTime = Time.deltaTime;
         }
         private void FixedUpdate()
         {
