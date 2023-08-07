@@ -49,8 +49,8 @@ namespace Scenes.Level1.Scripts
             IEnumerator FallingScuffed()
             {
                 playerAnim.Play("Falling", 4);
-                yield return new WaitForSeconds(1.71f);
-                playerAnim.Play("Nothing", 4);
+                yield return new WaitForSeconds(1.59f);
+                playerAnim.Play("Falling_Impact", 4);
                 StopCoroutine(FallingScuffed());
             }
         }
