@@ -9,7 +9,7 @@ namespace Scenes.Level1.Scripts
         bool _amPaused;
         private bool _menu;
         private bool _ending;
-        [SerializeField] GameObject pauseUi;
+        [SerializeField] private GameObject[] pauseObjects;
         [SerializeField] private Animator ratSpin;
         [SerializeField] private audioArray audScript;
 
@@ -51,7 +51,7 @@ namespace Scenes.Level1.Scripts
                 Cursor.lockState = CursorLockMode.Locked;
                 pauseExit.Invoke();
                 _amPaused = false;
-                pauseUi.SetActive(false);
+                foreach (var t in pauseObjects) t.SetActive(false);
                 //"comparing to null is expensive" they said,
                 if (ReferenceEquals(ratSpin, null)) return;
                 var speed = ratSpin.speed;
@@ -65,7 +65,7 @@ namespace Scenes.Level1.Scripts
                 Cursor.lockState = CursorLockMode.None;
                 pauseEnter.Invoke();
                 _amPaused = true;
-                pauseUi.SetActive(true);
+                foreach (var t in pauseObjects) t.SetActive(true);
             }
         }
         public void quitGame()

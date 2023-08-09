@@ -7,6 +7,7 @@ TagManager:
   - IgnoreCollider
   - Speedrunner
   - LangPick
+  - LangHelp
   layers:
   - Default
   - TransparentFX

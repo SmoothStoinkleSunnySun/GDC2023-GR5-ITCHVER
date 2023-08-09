@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="098163ea-c3ba-49a1-aaf4-8dbd801cb3be" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheUnityProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheUnityProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Ending.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Ending.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/QuitButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/QuitButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/language switch scripts/LanguagePicker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/language switch scripts/LanguagePicker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StartCutscene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StartCutscene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +24,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/audioArray.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/language switch scripts/LanguageHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Menu/UISwitchButton.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -118,6 +124,7 @@
       <workItem from="1691319775434" duration="19524000" />
       <workItem from="1691434929596" duration="631000" />
       <workItem from="1691514921905" duration="5507000" />
+      <workItem from="1691602882093" duration="6939000" />
     </task>
     <servers />
   </component>
