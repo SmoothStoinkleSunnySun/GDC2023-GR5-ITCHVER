@@ -17,6 +17,11 @@ namespace Scenes.Menu
         private void Start()
         {
             applyButton.interactable = false;
+            
+            if (!languagePicker.isDanish) return;
+            _lastSwitch = 0;
+            txtEng.SetActive(false);
+            txtDan.SetActive(true);
         }
         public void Switch()
         {

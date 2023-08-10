@@ -5,6 +5,7 @@ namespace Scenes.Level1.Scripts
 {
     public class QuitButton : MonoBehaviour
     {
+        
         //lmao commented code city
         bool _amPaused;
         private bool _menu;
@@ -15,31 +16,52 @@ namespace Scenes.Level1.Scripts
 
         [SerializeField] private UnityEvent pauseEnter;
         [SerializeField] private UnityEvent pauseExit;
+
+        private bool IsNull<T>(T myObject)
+        {
+            if (myObject is Object obj)
+            {
+                if (!obj) return false;
+            }
+            else
+            {
+                if (myObject == null) return false;
+            }
+            return true;
+        }
         private void Awake()
         {        
             Time.timeScale = 1.0f; //just in case, idk, lol
 
-            if (SceneManager.GetActiveScene().buildIndex == 0) //if we are in the menu
+            var buildIndex = SceneManager.GetActiveScene().buildIndex;
+            
+            switch (buildIndex)
             {
-                _menu = true;
-                _ending = false;
-            }
-            else if (SceneManager.GetActiveScene().buildIndex == 3) //if we are in the ending
-            {
-                _ending = true;
-                _menu = false;
+                //if we are in the menu
+                case 0:
+                    _menu = true;
+                    _ending = false;
+                    break;
+                //if we are in the ending
+                case 3:
+                    _ending = true;
+                    _menu = false;
+                    break;
             }
         }
 
         private void Update() //fixedupdate is not called if timescale is 0
         {
-            if (Input.GetKeyDown(KeyCode.T) && !_menu && !_ending) //change this to escape
+            var inputGetKeyDown = Input.GetKeyDown(KeyCode.T); //change this to escape
+            
+            switch (inputGetKeyDown)
             {
-                pausing();
-            }
-            else if (Input.GetKeyDown(KeyCode.T) && (_menu || _ending))
-            {
-                Application.Quit();
+                case true when !_menu && !_ending:
+                    pausing();
+                    break;
+                case true when (_menu || _ending):
+                    Application.Quit();
+                    break;
             }
         }
 
@@ -52,8 +74,7 @@ namespace Scenes.Level1.Scripts
                 pauseExit.Invoke();
                 _amPaused = false;
                 foreach (var t in pauseObjects) t.SetActive(false);
-                //"comparing to null is expensive" they said,
-                if (ReferenceEquals(ratSpin, null)) return;
+                if (IsNull(ratSpin)) return; //"comparing to null is expensive" they said,
                 var speed = ratSpin.speed;
                 speed += (float)0.2;
                 ratSpin.speed = speed;
@@ -75,3 +96,6 @@ namespace Scenes.Level1.Scripts
         }
     }
 }
+    
+    
+
