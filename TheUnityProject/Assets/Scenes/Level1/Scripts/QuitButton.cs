@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Cursor = UnityEngine.Cursor;
 namespace Scenes.Level1.Scripts
 {
     public class QuitButton : MonoBehaviour
