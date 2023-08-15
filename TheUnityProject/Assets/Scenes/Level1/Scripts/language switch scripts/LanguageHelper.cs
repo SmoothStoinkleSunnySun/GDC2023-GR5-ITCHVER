@@ -30,7 +30,8 @@ namespace Scenes.Level1.Scripts.language_switch_scripts
 
             myLangPick.transferData(savedIsDanish, savedIsEnglish, savedLastSwitch, this);
 
-            if (!savedIsDanish || savedLastSwitch != 0) return;
+            Debug.Log($"savedIsDanish {savedIsDanish}");
+            if (!savedIsDanish) return;
             myLangPick.IsSwitchingLang = true;
             myLangPick.switchToDanish.Invoke();
         }

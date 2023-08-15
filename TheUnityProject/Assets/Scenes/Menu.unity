@@ -1819,7 +1819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 2.8}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &433901764
@@ -1844,8 +1844,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Switch
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 112137536475f034182d8fc14effc0f0, type: 2}
+  m_sharedMaterial: {fileID: -6939520613055790742, guid: 112137536475f034182d8fc14effc0f0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1869,8 +1870,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1954,7 +1955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 2.7999878}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &455526737
@@ -1981,8 +1982,9 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 112137536475f034182d8fc14effc0f0, type: 2}
+  m_sharedMaterial: {fileID: -6939520613055790742, guid: 112137536475f034182d8fc14effc0f0,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2006,8 +2008,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2124,8 +2126,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2158273700
-  m_fontColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 0.5019608}
+    rgba: 2156765856
+  m_fontColor: {r: 0.627451, g: 0.63529414, b: 0.5529412, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2696,8 +2698,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2158273700
-  m_fontColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 0.5019608}
+    rgba: 2156765856
+  m_fontColor: {r: 0.627451, g: 0.63529414, b: 0.5529412, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3979,7 +3981,7 @@ GameObject:
   - component: {fileID: 997471181}
   - component: {fileID: 997471184}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button_Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5994,7 +5996,7 @@ GameObject:
   - component: {fileID: 1524313902}
   - component: {fileID: 1524313901}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6322,8 +6324,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2158273700
-  m_fontColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 0.5019608}
+    rgba: 2156765856
+  m_fontColor: {r: 0.627451, g: 0.63529414, b: 0.5529412, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7449,8 +7451,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2158273700
-  m_fontColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 0.5019608}
+    rgba: 2156765856
+  m_fontColor: {r: 0.627451, g: 0.63529414, b: 0.5529412, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7806,8 +7808,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4289838254
+  m_fontColor: {r: 0.68378425, g: 0.735849, b: 0.6933955, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8078,8 +8080,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2158273700
-  m_fontColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 0.5019608}
+    rgba: 2156765856
+  m_fontColor: {r: 0.627451, g: 0.63529414, b: 0.5529412, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8766,8 +8768,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2158273700
-  m_fontColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 0.5019608}
+    rgba: 2156765856
+  m_fontColor: {r: 0.627451, g: 0.63529414, b: 0.5529412, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
