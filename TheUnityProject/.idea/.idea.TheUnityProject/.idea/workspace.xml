@@ -6,16 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="098163ea-c3ba-49a1-aaf4-8dbd801cb3be" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheUnityProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheUnityProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/language switch scripts/LS_TMP.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/language switch scripts/LS_TMP.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/language switch scripts/LanguageHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/language switch scripts/LanguageHelper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/language switch scripts/LanguagePicker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Scripts/language switch scripts/LanguagePicker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Visual/Fonts/Mynerve-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Visual/Fonts/Mynerve-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Visual/Fonts/NotoSansLaoLooped-VariableFont_wdth,wght SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Visual/Fonts/NotoSansLaoLooped-VariableFont_wdth,wght SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/Visual/Fonts/YujiBoku-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/Visual/Fonts/YujiBoku-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/StartCutscene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StartCutscene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +130,7 @@
       <workItem from="1692034157626" duration="2916000" />
       <workItem from="1692123539758" duration="4000" />
       <workItem from="1692123566572" duration="1344000" />
+      <workItem from="1692522603723" duration="1807000" />
     </task>
     <servers />
   </component>

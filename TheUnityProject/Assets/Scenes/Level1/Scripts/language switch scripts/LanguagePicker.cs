@@ -25,6 +25,7 @@ namespace Scenes.Level1.Scripts.language_switch_scripts
             isDanish = danish;
             isEnglish = english;
             _lastSwitch = lastSwitch;
+            myLangHelpy = langHelpy;
         }
         public void ApplySwitch()
         {
@@ -51,9 +52,6 @@ namespace Scenes.Level1.Scripts.language_switch_scripts
             myLangHelpy.savedLastSwitch = _lastSwitch;
             myLangHelpy.savedIsDanish = isDanish;
             myLangHelpy.savedIsEnglish = isEnglish;
-        }
-        private void OnDisable()
-        {
             SceneManager.sceneUnloaded -= OnSceneUnloaded;
         }
     }

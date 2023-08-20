@@ -30,12 +30,5 @@ namespace Scenes.Level1.Scripts.language_switch_scripts
             for (int i = 0; i < Text.Length; i++) Text[i].TMPComp.text = Text[i].EnglishVer;
             if (!enabled) _switchToEnglish = true;
         }
-        private void OnEnable()
-        {
-            Debug.Log("enable");
-            Debug.Log($"_switchToDanish {_switchToDanish} _switchToEnglish {_switchToEnglish}");
-            if (_switchToDanish) TXT_ToDanish();
-            else if (_switchToEnglish) TXT_ToEnglish();
-        }
     }
 }
