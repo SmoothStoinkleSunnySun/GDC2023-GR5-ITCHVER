@@ -51,6 +51,8 @@ namespace Scenes.Level1.Scripts
             {
                 audSource.SetActive(true);
                 audSourceAudio.clip = coolCutscenes[CutsceneToPlay].memoMusic;
+                if (audSourceAudio.volume == 0) audSourceAudio.volume = 0.529f;
+                var originalVol = audSourceAudio.volume;
                 audSourceAudio.Play();
             
                 var imgTime = new WaitForSeconds(timer);
@@ -83,6 +85,8 @@ namespace Scenes.Level1.Scripts
                     audSourceAudio.volume -= 0.06f;
                     yield return waitABit;
                 }
+
+                audSourceAudio.volume = originalVol;
                 audSource.SetActive(false);
 
                 StopCoroutine(imageIntervals(timer));

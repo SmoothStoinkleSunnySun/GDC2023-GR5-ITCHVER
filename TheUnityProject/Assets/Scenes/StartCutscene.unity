@@ -1527,12 +1527,12 @@ MonoBehaviour:
     cutscene 0 = intro'
   coolCutscenes:
   - sprites:
-    - {fileID: 21300000, guid: dda38d46f958186458d3aeef74ecb5ec, type: 3}
-    - {fileID: 21300000, guid: 8bf0c2fbecb33d140963cfc20ec0bdeb, type: 3}
-    - {fileID: 21300000, guid: e7d761de36c90164a9df63341bbde605, type: 3}
-    - {fileID: 21300000, guid: 9d3693b6db701bf4d8b91ebcaa7df20e, type: 3}
-    - {fileID: 21300000, guid: 1e508bb40e8c76a4abb87d8bb5b39133, type: 3}
-    - {fileID: 21300000, guid: 3d127c6c14d0f714586e10049d817286, type: 3}
+    - {fileID: 21300000, guid: 3e8ec614af116614a87dad20b41ff227, type: 3}
+    - {fileID: 21300000, guid: c04a80698d2df8e4184e7286cce30229, type: 3}
+    - {fileID: 21300000, guid: eee94ce90daad0c46b1d498fcac8cf8a, type: 3}
+    - {fileID: 21300000, guid: 27910e19b9334024bb0ca5d65d9fb5b6, type: 3}
+    - {fileID: 21300000, guid: 1db1baaf8e07d8747a03a6ac1fb09894, type: 3}
+    - {fileID: 21300000, guid: 617127396da36744c83e62116feee19e, type: 3}
   imageTimer: 3
   darkAnim: {fileID: 2067739398}
   img: {fileID: 1219714471}
