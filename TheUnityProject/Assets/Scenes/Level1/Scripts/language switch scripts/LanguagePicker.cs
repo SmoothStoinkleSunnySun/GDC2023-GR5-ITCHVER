@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,9 @@ namespace Scenes.Level1.Scripts.language_switch_scripts
         public UnityEvent switchToEnglish;
 
         public LanguageHelper myLangHelpy;
+        //for scene StartCutscene ONLY
+        private SpeedRunModeTracker _speedRunModeTracker;
+        private bool _speedTrackerActive;
         public bool IsSwitchingLang { get; set; }
         //these could be 1 bool, but idc they look prettier this way
         [HideInInspector] public bool isDanish;
@@ -26,6 +30,37 @@ namespace Scenes.Level1.Scripts.language_switch_scripts
             isEnglish = english;
             _lastSwitch = lastSwitch;
             myLangHelpy = langHelpy;
+        }
+        public void setSpeedRunTracker(SpeedRunModeTracker speedTracker)
+        {
+            _speedRunModeTracker = speedTracker;
+            _speedTrackerActive = true;
+        }
+        // So you see, these two methods are here because SpeedRunTracker is from the Menu scene,
+        // and therefore we can't tell it to do anything before we've set it
+        public void skipToDanish()
+        {
+            if (!_speedTrackerActive) StartCoroutine(waitingForScript());
+            else _speedRunModeTracker.toDanish();
+
+            IEnumerator waitingForScript()
+            {
+                yield return new WaitUntil(() => _speedTrackerActive);
+                _speedRunModeTracker.toDanish();
+                StopCoroutine(waitingForScript());
+            }
+        }
+        public void skipToEnglish()
+        {
+            if (!_speedTrackerActive) StartCoroutine(waitingForScript());
+            else _speedRunModeTracker.toEnglish();
+
+            IEnumerator waitingForScript()
+            {
+                yield return new WaitUntil(() => _speedTrackerActive);
+                _speedRunModeTracker.toEnglish();
+                StopCoroutine(waitingForScript());
+            }
         }
         public void ApplySwitch()
         {

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 namespace Scenes.Level1.Scripts
 {
     public class SpeechMachine : MonoBehaviour
@@ -15,15 +17,29 @@ namespace Scenes.Level1.Scripts
         [Header("you can change these")] [SerializeField]
         private float thonkTime;
         [SerializeField] private float thonkLetterTime;
-        [TextArea][SerializeField] private string textToThink;
+        [TextArea][SerializeField] private string textToThinkEnglish;
+        [TextArea][SerializeField] private string textToThinkDanish;
         [SerializeField] private AudioClip[] thonkingSounds;
         private char[] _textButChar;
         private bool _isSkipping;
+        private string _textToThink;
 
+        private void Awake()
+        {
+            _textToThink = textToThinkEnglish;
+        }
+        public void toDanish()
+        {
+            _textToThink = textToThinkDanish;
+        }
+        public void toEnglish()
+        {
+            _textToThink = textToThinkEnglish;
+        }
         public void thinkingText()
         {
             textCanvas.SetActive(true);
-            _textButChar = textToThink.ToCharArray(0, textToThink.Length);
+            _textButChar = _textToThink.ToCharArray(0, _textToThink.Length);
             StartCoroutine(thonk(thonkTime));
 
             IEnumerator thonk(float timer)
@@ -36,7 +52,11 @@ namespace Scenes.Level1.Scripts
 
                     if (_isSkipping) thonker.text += t;
 
-                    if (t == '>') _isSkipping = false;
+                    if (t == '>')
+                    {
+                        _isSkipping = false;
+                        continue;
+                    }
 
                     if (_isSkipping) continue;
                     thonker.text += t;

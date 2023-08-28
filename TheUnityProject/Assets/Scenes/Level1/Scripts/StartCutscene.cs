@@ -28,6 +28,15 @@ namespace Scenes.Level1.Scripts
         [SerializeField] bool isStartCutscene;
         [SerializeField] private AudioSource audSource;
         public int CutsceneToPlay { get; set; }
+        
+        private WaitUntil _waitForBlack;
+        private bool _skipCanBePressed;
+        private bool _skipped;
+
+        private void Awake()
+        {
+            _waitForBlack = new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
+        }
 
         public void startCutscene()
         {
@@ -38,35 +47,47 @@ namespace Scenes.Level1.Scripts
             }        
         }
 
-        // ReSharper disable Unity.PerformanceAnalysis
+        private void FixedUpdate()
+        {
+            if (!_skipCanBePressed) return;
+            if (!Input.GetKey(KeyCode.E)) return;
+            _skipCanBePressed = false;
+            _skipped = true;
+        }
+
         private IEnumerator imageIntervals(float timer)
         {
             var originalVol = audSource.volume;
             audSource.volume = 0;
+            var waitABit = new WaitForSeconds(0.2f);
             while (audSource.volume < originalVol)
             {
                 audSource.volume += 0.08f;
-                yield return new WaitForSeconds(0.2f);
+                yield return waitABit;
             }
+            
+            _skipCanBePressed = true;
+            var imgTime = new WaitForSeconds(timer);
             foreach (var t in coolCutscenes[CutsceneToPlay].sprites)
             {
+                if (_skipped) break;
                 darkAnim.Play("fade in");
-                yield return new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
+                yield return _waitForBlack;
 
-                if (!img.enabled)
-                {
-                    img.enabled = true;
-                }
+                if (!img.enabled) img.enabled = true;
 
                 img.sprite = t;
                 darkAnim.Play("fade out");
-                yield return new WaitForSeconds(timer);
+                yield return imgTime;
             }
+            _skipCanBePressed = false;
+            _skipped = false;
             darkAnim.Play("fade in");
+
             while (audSource.volume > 0)
             {
                 audSource.volume -= 0.06f;
-                yield return new WaitForSeconds(0.2f);
+                yield return waitABit;
             }
             yield return new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
             StartCoroutine(RedirectToAScene());

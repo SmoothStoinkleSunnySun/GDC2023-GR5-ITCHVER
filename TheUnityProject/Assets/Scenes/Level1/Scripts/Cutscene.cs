@@ -29,6 +29,8 @@ namespace Scenes.Level1.Scripts
         
         //private hidden
         private WaitUntil _waitForBlack;
+        private bool _skipCanBePressed;
+        private bool _skipped;
         
         //public
         public int CutsceneToPlay { get; set; }
@@ -39,6 +41,14 @@ namespace Scenes.Level1.Scripts
             DontDestroyOnLoad(gameObject);
             Instance = this;
             _waitForBlack = new WaitUntil(() => darkAnim.GetCurrentAnimatorStateInfo(0).IsName("black"));
+        }
+
+        private void FixedUpdate()
+        {
+            if (!_skipCanBePressed) return;
+            if (!Input.GetKey(KeyCode.E)) return;
+            _skipCanBePressed = false;
+            _skipped = true;
         }
 
         public void startCutscene()
@@ -56,19 +66,24 @@ namespace Scenes.Level1.Scripts
                 audSourceAudio.Play();
             
                 var imgTime = new WaitForSeconds(timer);
-
-                for (var i = 0; i < coolCutscenes[CutsceneToPlay].sprites.Length; i++)
+                var counting = 0;
+                foreach (var t in coolCutscenes[CutsceneToPlay].sprites)
                 {
+                    if (_skipped) break;
                     darkAnim.Play("fade in");
                     yield return _waitForBlack;
 
                     if (!img.enabled) img.enabled = true;
 
-                    img.sprite = coolCutscenes[CutsceneToPlay].sprites[i];
-                    if (i == coolCutscenes[CutsceneToPlay].sprites.Length - 1) sfxA.Play();
+                    img.sprite = t;
+                    counting += 1;
+                    if (counting == coolCutscenes[CutsceneToPlay].sprites.Length - 1) sfxA.Play();
+                    if (counting == 2) _skipCanBePressed = true;
                     darkAnim.Play("fade out");
                     yield return imgTime;
                 }
+                _skipCanBePressed = false;
+                _skipped = false;
 
                 darkAnim.Play("fade in");
                 yield return _waitForBlack;
