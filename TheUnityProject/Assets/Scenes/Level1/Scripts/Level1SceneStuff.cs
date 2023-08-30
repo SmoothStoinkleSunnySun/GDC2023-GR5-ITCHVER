@@ -8,10 +8,12 @@ namespace Scenes.Level1.Scripts
     public class Level1SceneStuff : MonoBehaviour
     {
         [Header("Private")]
-        [SerializeField]
-        private CinemachineVirtualCamera vcamstart;
+        [SerializeField] private CinemachineVirtualCamera vcamstart;
         [SerializeField] private float timer;
         [SerializeField] private Animator playerAnim;
+        [SerializeField] private AudioSource playerSFXSauce;
+        [SerializeField] private AudioClip fallsound;
+        [SerializeField] private PlayerMove playerscript;
 
         [Header("Public")]
         public Collider playerCollider;
@@ -48,9 +50,13 @@ namespace Scenes.Level1.Scripts
             }
             IEnumerator FallingScuffed()
             {
+                playerscript.AllowMovement = false;
                 playerAnim.Play("Falling", 4);
                 yield return new WaitForSeconds(1.59f);
                 playerAnim.Play("Falling_Impact", 4);
+                playerSFXSauce.PlayOneShot(fallsound);
+                yield return new WaitForSeconds(2f);
+                playerscript.AllowMovement = true;
                 StopCoroutine(FallingScuffed());
             }
         }

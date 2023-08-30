@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -702,7 +702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 392, y: -300}
+  m_AnchoredPosition: {x: 380, y: -308}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &578847080
@@ -1239,6 +1239,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2009527268}
+        m_TargetAssemblyTypeName: Scenes.Level1.Scripts.language_switch_scripts.ChangeToNewImageTex,
+          Assembly-CSharp
+        m_MethodName: changeToSprite
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   switchToEnglish:
     m_PersistentCalls:
       m_Calls:
@@ -1264,6 +1277,19 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2009527268}
+        m_TargetAssemblyTypeName: Scenes.Level1.Scripts.language_switch_scripts.ChangeToNewImageTex,
+          Assembly-CSharp
+        m_MethodName: changeToSprite
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3348,8 +3374,9 @@ GameObject:
   - component: {fileID: 2009527265}
   - component: {fileID: 2009527267}
   - component: {fileID: 2009527266}
+  - component: {fileID: 2009527268}
   m_Layer: 5
-  m_Name: Image
+  m_Name: news
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3372,7 +3399,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -294, y: 0}
+  m_AnchoredPosition: {x: -305, y: 0}
   m_SizeDelta: {x: 2048, y: 2048}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2009527266
@@ -3395,7 +3422,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f2889b4ca1246534fbc7b196ea57ef7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f538e503b8a960949b6febe9428e9371, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3413,6 +3440,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009527264}
   m_CullTransparentMesh: 1
+--- !u!114 &2009527268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009527264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3833ebe8839623b45a727088546bf517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notes: '0 = danish, 1 = english
+
+'
+  imageComp: {fileID: 2009527266}
+  spritesToChange:
+  - sprite: {fileID: 21300000, guid: dd7b71e6b2a42af4f9ce09aed16b7368, type: 3}
+  - sprite: {fileID: 21300000, guid: f538e503b8a960949b6febe9428e9371, type: 3}
 --- !u!1 &2078178399
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,19 +17,6 @@ namespace Scenes.Level1.Scripts
 
         [SerializeField] private UnityEvent pauseEnter;
         [SerializeField] private UnityEvent pauseExit;
-
-        private bool IsNull<T>(T myObject)
-        {
-            if (myObject is Object obj)
-            {
-                if (!obj) return false;
-            }
-            else
-            {
-                if (myObject == null) return false;
-            }
-            return true;
-        }
         private void Awake()
         {        
             Time.timeScale = 1.0f; //just in case, idk, lol
@@ -75,7 +62,7 @@ namespace Scenes.Level1.Scripts
                 pauseExit.Invoke();
                 _amPaused = false;
                 foreach (var t in pauseObjects) t.SetActive(false);
-                if (IsNull(ratSpin)) return; //"comparing to null is expensive" they said,
+                if (ratSpin == null) return; //"comparing to null is expensive" they said,
                 var speed = ratSpin.speed;
                 speed += (float)0.2;
                 ratSpin.speed = speed;
