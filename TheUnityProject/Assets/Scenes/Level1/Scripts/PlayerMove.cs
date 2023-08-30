@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 namespace Scenes.Level1.Scripts
 {
     public class PlayerMove : MonoBehaviour
@@ -16,6 +17,10 @@ namespace Scenes.Level1.Scripts
 
         [Header("Private")]
         [SerializeField] private float moveSpeed;
+        [SerializeField] private AudioClip[] walkingSounds;
+        [SerializeField] private AudioClip[] walkingWaterSounds;
+        [SerializeField] private AudioSource walkingSFXsauce;
+        [SerializeField] private Collider playerCollider;
 
         //not visible in inspector
 
@@ -27,6 +32,8 @@ namespace Scenes.Level1.Scripts
         private static readonly int AnimMoveY = Animator.StringToHash("AnimMoveY");
         private static readonly int BreathSpeed = Animator.StringToHash("BreathSpeed");
         private float _breathingSpeed;
+        private float _timeSinceLastFootstep;
+        private bool _isTouchingWater;
 
         private void Start()
         {
@@ -78,9 +85,48 @@ namespace Scenes.Level1.Scripts
                 anim.Play("Walk_new", 3);
                 anim.SetFloat(AnimMoveX, _moveD.x);
                 anim.SetFloat(AnimMoveY, _moveD.z);
+                
+                if (!_grounded) return;
+                
+                // from https://sharpcoderblog.com/blog/unity-implementing-footstep-sounds
+                if (!(Time.time - _timeSinceLastFootstep >= 0.30f)) return;
+                var footstepSound = walkingSounds[Random.Range(0, walkingSounds.Length)];
+                walkingSFXsauce.PlayOneShot(footstepSound);
+                _timeSinceLastFootstep = Time.time;
+                
+                // I have no clue why, but the below code, which is supposed to play a water walking sfx
+                // when inside a trigger with the tag "WaterStream", sometimes plays the water sfx when
+                // the player collider is definitely 100% not in a WaterStream trigger.
+                // This also happens between a long row of regular walking sounds, despite not moving towards the trigger.
+                // Feel free to fix this!
+                
+                // if (!_isTouchingWater)
+                // {
+                //     
+                // }
+                // else
+                // {
+                //     var footstepSound = walkingWaterSounds[Random.Range(0, walkingWaterSounds.Length)];
+                //     PlaySound(footstepSound);
+                // }
+
+                // void PlaySound(AudioClip footstepSound)
+                // {
+                //     walkingSFXsauce.PlayOneShot(footstepSound);
+                //     _timeSinceLastFootstep = Time.time;
+                // }
             }
         }
 
+        // private void OnTriggerEnter(Collider other)
+        // {
+        //     if (other.transform.CompareTag("WaterStream")) _isTouchingWater = true;
+        // }
+        //
+        // private void OnTriggerExit(Collider other)
+        // {
+        //     if (other.transform.CompareTag("WaterStream")) _isTouchingWater = false;
+        // }
         private void FixedUpdate()
         {
             //If AllowMovement is true/enabled

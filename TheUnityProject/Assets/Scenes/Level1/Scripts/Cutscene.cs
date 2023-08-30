@@ -77,7 +77,7 @@ namespace Scenes.Level1.Scripts
 
                     img.sprite = t;
                     counting += 1;
-                    if (counting == coolCutscenes[CutsceneToPlay].sprites.Length - 1) sfxA.Play();
+                    if (counting == coolCutscenes[CutsceneToPlay].sprites.Length) sfxA.Play();
                     if (counting == 2) _skipCanBePressed = true;
                     darkAnim.Play("fade out");
                     yield return imgTime;

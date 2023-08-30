@@ -19629,9 +19629,10 @@ GameObject:
   - component: {fileID: 965775484}
   - component: {fileID: 965775486}
   - component: {fileID: 965775485}
+  - component: {fileID: 965775487}
   m_Layer: 0
   m_Name: Water_remake (2)
-  m_TagString: Untagged
+  m_TagString: WaterStream
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 125
@@ -19700,6 +19701,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965775483}
+  m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
+--- !u!64 &965775487
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965775483}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
 --- !u!1 &968609906
 GameObject:
@@ -20434,6 +20457,7 @@ Transform:
   m_LocalScale: {x: 0.60518014, y: 0.60518014, z: 0.60518014}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1429138086}
   - {fileID: 360252055}
   - {fileID: 5385842648250478263}
   - {fileID: 7504241940557193522}
@@ -20461,6 +20485,31 @@ MonoBehaviour:
   rb: {fileID: 998285449}
   anim: {fileID: 7504241940557193523}
   moveSpeed: 4
+  walkingSounds:
+  - {fileID: 8300000, guid: 7bc051b148ab7034cabdbf57c426d320, type: 3}
+  - {fileID: 8300000, guid: 3a78b9e145fa9c348bc6022a9eaa3724, type: 3}
+  - {fileID: 8300000, guid: 963a1746836dc684ab8aafd707b29be2, type: 3}
+  - {fileID: 8300000, guid: 63fd4bf5de157bb45b0b02fc7e3e4b81, type: 3}
+  - {fileID: 8300000, guid: dbd5853f3c2b66b40b78963e83468506, type: 3}
+  - {fileID: 8300000, guid: 619ea9d3faffa4b478c66052cdd603ae, type: 3}
+  - {fileID: 8300000, guid: aeef7ad74dd0449439fd07f004b74bed, type: 3}
+  - {fileID: 8300000, guid: 75291f33c55c36b40990cf7f932195d1, type: 3}
+  walkingWaterSounds:
+  - {fileID: 8300000, guid: 75291f33c55c36b40990cf7f932195d1, type: 3}
+  - {fileID: 8300000, guid: cf800363269f2b64a90e0bc2dfa4da40, type: 3}
+  - {fileID: 8300000, guid: e28891ddd63093a41b9a41a9c97541c9, type: 3}
+  - {fileID: 8300000, guid: 3aac620d28c8cfa47b5f46af44284b1e, type: 3}
+  - {fileID: 8300000, guid: a111ad76ff1173643b44fda2ca7d8788, type: 3}
+  - {fileID: 8300000, guid: 13f807a621739af4996af919b20ede34, type: 3}
+  - {fileID: 8300000, guid: 354e4b11a0ac42c4dbeb320a4f92b185, type: 3}
+  - {fileID: 8300000, guid: 35799a10c3376ba4e95c68fe69a08bc4, type: 3}
+  - {fileID: 8300000, guid: 71901724d00e08a48887e6234f6da4c8, type: 3}
+  - {fileID: 8300000, guid: 4966785a71a8ab444a6c96e6b7a2d32d, type: 3}
+  - {fileID: 8300000, guid: 4b168767518fba948bdc3126caecf7b4, type: 3}
+  - {fileID: 8300000, guid: 5cff7d29cf7826f41b0586fcc33427e0, type: 3}
+  - {fileID: 8300000, guid: cd52fa2689e0fd441aa8423137e58b00, type: 3}
+  walkingSFXsauce: {fileID: 1429138087}
+  playerCollider: {fileID: 3710936397568558617}
 --- !u!54 &998285449
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21865,9 +21914,10 @@ GameObject:
   - component: {fileID: 1073272147}
   - component: {fileID: 1073272149}
   - component: {fileID: 1073272148}
+  - component: {fileID: 1073272150}
   m_Layer: 0
   m_Name: Water_remake (3)
-  m_TagString: Untagged
+  m_TagString: WaterStream
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 125
@@ -21936,6 +21986,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073272146}
+  m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
+--- !u!64 &1073272150
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073272146}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
 --- !u!1 &1073511905
 GameObject:
@@ -27111,9 +27183,10 @@ GameObject:
   - component: {fileID: 1271377346}
   - component: {fileID: 1271377348}
   - component: {fileID: 1271377347}
+  - component: {fileID: 1271377349}
   m_Layer: 0
   m_Name: Water_remake (4)
-  m_TagString: Untagged
+  m_TagString: WaterStream
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 125
@@ -27182,6 +27255,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271377345}
+  m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
+--- !u!64 &1271377349
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271377345}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
 --- !u!1 &1275534626
 GameObject:
@@ -29760,6 +29855,134 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1427142724}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1429138085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1429138086}
+  - component: {fileID: 1429138087}
+  m_Layer: 0
+  m_Name: walking sfx
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1429138086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429138085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 998285447}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1429138087
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429138085}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.546
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 9.4
+  MaxDistance: 20.8
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1436119405
 GameObject:
   m_ObjectHideFlags: 0
@@ -33172,9 +33395,10 @@ GameObject:
   - component: {fileID: 1640879751}
   - component: {fileID: 1640879753}
   - component: {fileID: 1640879752}
+  - component: {fileID: 1640879754}
   m_Layer: 0
   m_Name: Water_remake (5)
-  m_TagString: Untagged
+  m_TagString: WaterStream
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 125
@@ -33243,6 +33467,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640879750}
+  m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
+--- !u!64 &1640879754
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640879750}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
 --- !u!1 &1641919083
 GameObject:
@@ -34429,9 +34675,10 @@ GameObject:
   - component: {fileID: 1702194058}
   - component: {fileID: 1702194060}
   - component: {fileID: 1702194059}
+  - component: {fileID: 1702194061}
   m_Layer: 0
   m_Name: Water_remake (6)
-  m_TagString: Untagged
+  m_TagString: WaterStream
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 125
@@ -34500,6 +34747,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702194057}
+  m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
+--- !u!64 &1702194061
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702194057}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
 --- !u!1 &1703375714
 GameObject:
@@ -36598,7 +36867,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 263.72772
+  MaxDistance: 34.671875
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -36681,7 +36950,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815393854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2861.9521, y: -8.8047695, z: 1523.0703}
+  m_LocalPosition: {x: -2850.76, y: -1.79, z: 1531.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39622,9 +39891,10 @@ GameObject:
   - component: {fileID: 2029576209}
   - component: {fileID: 2029576211}
   - component: {fileID: 2029576210}
+  - component: {fileID: 2029576212}
   m_Layer: 0
   m_Name: Water_remake (1)
-  m_TagString: Untagged
+  m_TagString: WaterStream
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 125
@@ -39693,6 +39963,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029576208}
+  m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
+--- !u!64 &2029576212
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029576208}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
 --- !u!43 &2031014791
 Mesh:
@@ -43286,9 +43578,10 @@ GameObject:
   - component: {fileID: 543450653109466852}
   - component: {fileID: 3469287837025974593}
   - component: {fileID: 1711813856253496715}
+  - component: {fileID: 3469287837025974594}
   m_Layer: 0
   m_Name: Water_remake
-  m_TagString: Untagged
+  m_TagString: WaterStream
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 125
@@ -44480,9 +44773,10 @@ GameObject:
   - component: {fileID: 2311165919176216854}
   - component: {fileID: 1710579224214232755}
   - component: {fileID: 3484033439070628473}
+  - component: {fileID: 3484033439070628474}
   m_Layer: 0
   m_Name: Water_remake_Longer
-  m_TagString: Untagged
+  m_TagString: WaterStream
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 125
@@ -44632,6 +44926,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148571270238}
   m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
+--- !u!64 &3469287837025974594
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148571270238}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8802771628929948559, guid: 9b8ffba9c8101334d9a1dc3e022e35ab, type: 3}
 --- !u!33 &3469287838461773970
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -44717,6 +45033,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3484033439070628474
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123591056055897004}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4847954135985824502, guid: 181c1c5dc588c0845a7cc144e6edd406, type: 3}
 --- !u!1 &3582063071149732499
 GameObject:
   m_ObjectHideFlags: 0

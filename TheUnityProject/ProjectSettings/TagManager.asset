@@ -7,6 +7,8 @@ TagManager:
   - IgnoreCollider
   - Speedrunner
   - LangPick
+  - LangHelp
+  - WaterStream
   layers:
   - Default
   - TransparentFX
