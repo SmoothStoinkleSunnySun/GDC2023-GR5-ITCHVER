@@ -29,8 +29,6 @@ namespace Scenes.Level1.Scripts.language_switch_scripts
             myLangPick = GameObject.FindGameObjectWithTag("LangPick").GetComponent<LanguagePicker>();
 
             myLangPick.transferData(savedIsDanish, savedIsEnglish, savedLastSwitch, this);
-
-            Debug.Log($"savedIsDanish {savedIsDanish}");
             if (!savedIsDanish) return;
             myLangPick.IsSwitchingLang = true;
             myLangPick.switchToDanish.Invoke();

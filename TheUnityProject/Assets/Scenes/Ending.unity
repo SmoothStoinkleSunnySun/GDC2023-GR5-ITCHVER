@@ -3049,11 +3049,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text:
   - TMPComp: {fileID: 1147624362}
-    DanishVer: Lyd design
-    EnglishVer: Sound Design
+    DanishVer: 'Lyd design:'
+    EnglishVer: 'Sound Design:'
   - TMPComp: {fileID: 1456910805}
-    DanishVer: Programmering
-    EnglishVer: Programming
+    DanishVer: 'Programmering:'
+    EnglishVer: 'Programming:'
   - TMPComp: {fileID: 1579130883}
     DanishVer: Ekstra modeller, textures, og lyde af Twinkle SunnySun
     EnglishVer: Additional models, textures, and sounds by Twinkle SunnySun
@@ -3066,9 +3066,6 @@ MonoBehaviour:
   - TMPComp: {fileID: 259005526}
     DanishVer: Det der er tilbage
     EnglishVer: The remaining pieces
-  - TMPComp: {fileID: 0}
-    DanishVer: 
-    EnglishVer: 
   - TMPComp: {fileID: 992627093}
     DanishVer: Gruppe 5 - Game Development Camp 2023
     EnglishVer: Group 5 - Game Development Camp 2023

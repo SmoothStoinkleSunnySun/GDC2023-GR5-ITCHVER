@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Ungdommens Naturvidenskablige Forening (Gruppe Calcifer Productions)
-  productName: Det der er tilbage - What remains
+  productName: The Remaining Pieces - Det der er tilbage
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.06474724, g: 0.14150941, b: 0.0673962, a: 1}

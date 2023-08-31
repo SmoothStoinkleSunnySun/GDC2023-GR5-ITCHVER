@@ -24,8 +24,8 @@ namespace Scenes.Level1.Scripts
 
         [Header("Start stuff")]
         [SerializeField] private string password;
-        [SerializeField] private char[] _passwordChar;
-        [SerializeField] private char _currentChar;
+        private char[] _passwordChar;
+        private char _currentChar;
         private int _currentIndex;
         private bool _checkForInput = true;
 

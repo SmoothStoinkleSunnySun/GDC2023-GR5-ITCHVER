@@ -3738,7 +3738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &215377898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11697,7 +11697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &616834840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29254,8 +29254,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b880652a301652b4989b34537e5873c7, type: 3}
   - {fileID: 8300000, guid: 796a2a44782140145aaeaad6fdf81ff9, type: 3}
   password: crazy? i was crazy once.
-  _passwordChar: 
-  _currentChar: 257
 --- !u!1 &1366080123
 GameObject:
   m_ObjectHideFlags: 0
@@ -31671,7 +31669,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I was crazy once.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04aeb1a1c61dc3140a016a4658a2c3cc, type: 2}
   m_sharedMaterial: {fileID: 3593262394684429420, guid: 04aeb1a1c61dc3140a016a4658a2c3cc,

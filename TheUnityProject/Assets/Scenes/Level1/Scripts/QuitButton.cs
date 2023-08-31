@@ -40,7 +40,7 @@ namespace Scenes.Level1.Scripts
 
         private void Update() //fixedupdate is not called if timescale is 0
         {
-            var inputGetKeyDown = Input.GetKeyDown(KeyCode.T); //change this to escape
+            var inputGetKeyDown = Input.GetKeyDown(KeyCode.Escape); //change this to escape
             
             switch (inputGetKeyDown)
             {
@@ -59,6 +59,7 @@ namespace Scenes.Level1.Scripts
             {
                 Time.timeScale = 1.0f;
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 pauseExit.Invoke();
                 _amPaused = false;
                 foreach (var t in pauseObjects) t.SetActive(false);
@@ -72,6 +73,7 @@ namespace Scenes.Level1.Scripts
             {
                 Time.timeScale = 0f;
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 pauseEnter.Invoke();
                 _amPaused = true;
                 foreach (var t in pauseObjects) t.SetActive(true);

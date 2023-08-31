@@ -18,7 +18,7 @@ namespace Scenes.Level1.Scripts.language_switch_scripts
 
         public void changeToSprite(int indexNum)
         {
-            imageComp.sprite = spritesToChange[indexNum].sprite;
+            imageComp.overrideSprite = spritesToChange[indexNum].sprite;
         }
     }
 }
