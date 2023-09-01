@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Ungdommens Naturvidenskablige Forening (Gruppe Calcifer Productions)
-  productName: Det der er tilbage - What remains
+  productName: The remaining pieces (Camp version)
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.06474724, g: 0.14150941, b: 0.0673962, a: 1}
@@ -135,7 +135,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: Det virker, tror vi ;)
+  bundleVersion: Camp version
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -877,7 +877,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: TheUnityProject
-  metroPackageVersion: 
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -885,7 +885,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: TheUnityProject
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Det der er tilbage - What remains
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
